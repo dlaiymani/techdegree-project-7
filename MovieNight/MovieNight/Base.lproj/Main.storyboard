@@ -35,6 +35,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUn-t8-zP4">
                                 <rect key="frame" x="26" y="399" width="124" height="98"/>
                                 <state key="normal" backgroundImage="bubble-empty"/>
+                                <connections>
+                                    <segue destination="ujD-v2-l63" kind="presentation" id="eQW-Vd-7R0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJL-V2-Lm9">
                                 <rect key="frame" x="264" y="399" width="124" height="98"/>
@@ -65,7 +68,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="66F-Ua-L4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1587" y="125"/>
+            <point key="canvasLocation" x="1558" y="125"/>
+        </scene>
+        <!--Select Genres-->
+        <scene sceneID="1DM-fl-wUv">
+            <objects>
+                <tableViewController id="59c-1o-syG" customClass="SelectParametersController" customModule="MovieNight" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3e6-Ji-Y5S">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="checkmark" indentationWidth="10" id="eGF-vY-K8P">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eGF-vY-K8P" id="fVW-QP-RFl">
+                                    <rect key="frame" x="0.0" y="0.0" width="370" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="59c-1o-syG" id="JzK-cc-Dan"/>
+                            <outlet property="delegate" destination="59c-1o-syG" id="gBP-rX-NTW"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select Genres" id="U6X-BQ-t3n">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="jBb-mO-P0t">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1uA-p9-Tkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3397.1014492753625" y="124.55357142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lF5-PP-rQL">
@@ -85,6 +121,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1h5-LI-Eei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="596" y="125"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0Dw-PX-qAW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ujD-v2-l63" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AJA-wK-RaF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.70003944640000004" green="0.36914008860000003" blue="0.35685116049999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="59c-1o-syG" kind="relationship" relationship="rootViewController" id="zDa-jS-2X6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xE5-Ek-waJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2486.9565217391305" y="124.55357142857142"/>
         </scene>
     </scenes>
     <resources>
