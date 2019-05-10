@@ -13,6 +13,12 @@
 		AAF23B892285AF8100667B99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAF23B882285AF8100667B99 /* Assets.xcassets */; };
 		AAF23B8C2285AF8100667B99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAF23B8A2285AF8100667B99 /* LaunchScreen.storyboard */; };
 		AAF23B942285BE5600667B99 /* SelectParametersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23B932285BE5600667B99 /* SelectParametersController.swift */; };
+		AAF23B982285BF8700667B99 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23B972285BF8700667B99 /* JSONDecodable.swift */; };
+		AAF23B9A2285BFB200667B99 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23B992285BFB200667B99 /* APIClient.swift */; };
+		AAF23B9C2285BFFD00667B99 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23B9B2285BFFD00667B99 /* Endpoint.swift */; };
+		AAF23B9E2285C79C00667B99 /* ImdbClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23B9D2285C79C00667B99 /* ImdbClient.swift */; };
+		AAF23BA12285C8FC00667B99 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BA02285C8FC00667B99 /* Genre.swift */; };
+		AAF23BA32285CA6400667B99 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BA22285CA6400667B99 /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		AAF23B8B2285AF8100667B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAF23B8D2285AF8100667B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAF23B932285BE5600667B99 /* SelectParametersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectParametersController.swift; sourceTree = "<group>"; };
+		AAF23B972285BF8700667B99 /* JSONDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
+		AAF23B992285BFB200667B99 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		AAF23B9B2285BFFD00667B99 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		AAF23B9D2285C79C00667B99 /* ImdbClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImdbClient.swift; sourceTree = "<group>"; };
+		AAF23BA02285C8FC00667B99 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		AAF23BA22285CA6400667B99 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,8 @@
 		AAF23B802285AF8100667B99 /* MovieNight */ = {
 			isa = PBXGroup;
 			children = (
+				AAF23B9F2285C8EB00667B99 /* Models */,
+				AAF23B962285BF5B00667B99 /* Networking */,
 				AAF23B952285BEC200667B99 /* Controllers */,
 				AAF23B812285AF8100667B99 /* AppDelegate.swift */,
 				AAF23B852285AF8100667B99 /* Main.storyboard */,
@@ -73,6 +87,26 @@
 				AAF23B932285BE5600667B99 /* SelectParametersController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AAF23B962285BF5B00667B99 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AAF23B972285BF8700667B99 /* JSONDecodable.swift */,
+				AAF23B992285BFB200667B99 /* APIClient.swift */,
+				AAF23B9B2285BFFD00667B99 /* Endpoint.swift */,
+				AAF23B9D2285C79C00667B99 /* ImdbClient.swift */,
+				AAF23BA22285CA6400667B99 /* Result.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		AAF23B9F2285C8EB00667B99 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AAF23BA02285C8FC00667B99 /* Genre.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +180,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF23BA32285CA6400667B99 /* Result.swift in Sources */,
 				AAF23B842285AF8100667B99 /* ViewController.swift in Sources */,
 				AAF23B822285AF8100667B99 /* AppDelegate.swift in Sources */,
+				AAF23B9E2285C79C00667B99 /* ImdbClient.swift in Sources */,
 				AAF23B942285BE5600667B99 /* SelectParametersController.swift in Sources */,
+				AAF23B9A2285BFB200667B99 /* APIClient.swift in Sources */,
+				AAF23B9C2285BFFD00667B99 /* Endpoint.swift in Sources */,
+				AAF23B982285BF8700667B99 /* JSONDecodable.swift in Sources */,
+				AAF23BA12285C8FC00667B99 /* Genre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,15 +9,28 @@
 import UIKit
 
 class SelectParametersController: UITableViewController {
+    
+    lazy var client: ImdbClient = {
+        return ImdbClient(configuration: .default)
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        client.searchGenres() { [weak self] result in
+            switch result {
+            case .success(let genres):
+                print(genres[0].name)
+//                self?.dataSource.update(with: businesses)
+//                self?.tableView.reloadData()
+//
+//                self?.mapView.removeAnnotations(self!.mapView.annotations)
+//                self?.mapView.addAnnotations(businesses)
+            case .failure(let error):
+                print(error)
+            }
+        
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -28,23 +41,23 @@ class SelectParametersController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "genreCell", for: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = "toto"
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
