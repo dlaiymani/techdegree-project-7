@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iS6-RO-Vpz">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Movie Night-->
+        <scene sceneID="0ep-CO-h4N">
+            <objects>
+                <viewController id="uth-gW-Teq" customClass="ViewController" customModule="MovieNight" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jGx-eQ-Hpi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="M6y-MB-h7o">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUw-Tt-wgP">
+                                <rect key="frame" x="16" y="806" width="382" height="70"/>
+                                <color key="backgroundColor" red="0.70003944640000004" green="0.36914008860000003" blue="0.35685116049999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="kRh-Hl-gpI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="View Results">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUn-t8-zP4">
+                                <rect key="frame" x="26" y="399" width="124" height="98"/>
+                                <state key="normal" backgroundImage="bubble-empty"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJL-V2-Lm9">
+                                <rect key="frame" x="264" y="399" width="124" height="98"/>
+                                <state key="normal" backgroundImage="bubble-empty"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="M6y-MB-h7o" firstAttribute="leading" secondItem="YjF-qh-GuC" secondAttribute="leading" id="163-Pd-rki"/>
+                            <constraint firstItem="YjF-qh-GuC" firstAttribute="trailing" secondItem="nUw-Tt-wgP" secondAttribute="trailing" constant="16" id="CQr-Q4-oWd"/>
+                            <constraint firstItem="jJL-V2-Lm9" firstAttribute="centerY" secondItem="jGx-eQ-Hpi" secondAttribute="centerY" id="GX4-Yd-kyc"/>
+                            <constraint firstItem="YjF-qh-GuC" firstAttribute="trailing" secondItem="M6y-MB-h7o" secondAttribute="trailing" id="IVR-dh-J8i"/>
+                            <constraint firstItem="iUn-t8-zP4" firstAttribute="centerY" secondItem="jGx-eQ-Hpi" secondAttribute="centerY" id="MKQ-X3-kFh"/>
+                            <constraint firstItem="M6y-MB-h7o" firstAttribute="bottom" secondItem="nUw-Tt-wgP" secondAttribute="bottom" constant="20" id="RWe-Lh-fRb"/>
+                            <constraint firstItem="YjF-qh-GuC" firstAttribute="trailing" secondItem="jJL-V2-Lm9" secondAttribute="trailing" constant="26" id="SFC-cV-pgP"/>
+                            <constraint firstItem="nUw-Tt-wgP" firstAttribute="leading" secondItem="YjF-qh-GuC" secondAttribute="leading" constant="16" id="hdZ-w8-sXR"/>
+                            <constraint firstItem="M6y-MB-h7o" firstAttribute="top" secondItem="YjF-qh-GuC" secondAttribute="top" id="iOe-aN-C3g"/>
+                            <constraint firstAttribute="bottom" secondItem="M6y-MB-h7o" secondAttribute="bottom" id="kj5-29-fr0"/>
+                            <constraint firstItem="iUn-t8-zP4" firstAttribute="leading" secondItem="YjF-qh-GuC" secondAttribute="leading" constant="26" id="rd9-eE-thP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YjF-qh-GuC"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Movie Night" id="8Ia-Nh-SII">
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="yRe-9r-hSE">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="66F-Ua-L4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1587" y="125"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lF5-PP-rQL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iS6-RO-Vpz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Y3-H5-c0S">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.70003944640000004" green="0.36914008860000003" blue="0.35685116049999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uth-gW-Teq" kind="relationship" relationship="rootViewController" id="p3P-kt-n5l"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1h5-LI-Eei" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="596" y="125"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background" width="375.5" height="667.5"/>
+        <image name="bubble-empty" width="123.5" height="97.5"/>
+    </resources>
+</document>
