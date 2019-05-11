@@ -33,36 +33,25 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         self.tableView.dataSource = dataSource
         self.tableView.delegate = self
        // nextButton.isEnabled = false
+        self.navigationItem.hidesBackButton = true
 
-        if test == "param2" {
+        if parameterNumber == 2 {
             client.searchCertifications() { [weak self] result in
                 switch result {
                 case .success(let certification):
                     self?.dataSource.updateData(certification)
                     self?.tableView.reloadData()
-                    //                self?.dataSource.update(with: businesses)
-                    //                self?.tableView.reloadData()
-                    //
-                    //                self?.mapView.removeAnnotations(self!.mapView.annotations)
-                //                self?.mapView.addAnnotations(businesses)
                 case .failure(let error):
                     print(error)
                 }
             }
         } else {
         
-        
-        
         client.searchGenres() { [weak self] result in
             switch result {
             case .success(let genres):
                 self?.dataSource.updateData(genres)
                 self?.tableView.reloadData()
-//                self?.dataSource.update(with: businesses)
-//                self?.tableView.reloadData()
-//
-//                self?.mapView.removeAnnotations(self!.mapView.annotations)
-//                self?.mapView.addAnnotations(businesses)
             case .failure(let error):
                 print(error)
             }
@@ -76,11 +65,6 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
 
     // MARK: - TableView delegate
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
-          //  cell.accessoryType = .none
-        }
-    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             
@@ -112,31 +96,54 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nextParameterSegue" {
             if let vc = segue.destination as? SelectParametersController {
-                vc.test = "param2"
                 
-                if let rootNavVC = UIApplication.shared.keyWindow!.rootViewController as? UINavigationController, let rootVC = rootNavVC.viewControllers.first as? ViewController {
-                    
-                    if parameterNumber == 1 {
-                        var genres = [Genre]()
-                        for i in selectedParameters {
-                            genres.append(dataSource.object(at: IndexPath(row: i, section: 0)) as! Genre)
-                        }
-                        rootVC.genres.append(contentsOf: genres)
-                    }
-                    
-                    if parameterNumber == 2 {
-                        var certifications = [Certification]()
-                        for i in selectedParameters {
-                            certifications.append(dataSource.object(at: IndexPath(row: i, section: 0)) as! Certification)
-                        }
-                        rootVC.certification.append(contentsOf: certifications)
-                        dismiss(animated: true, completion: nil)
-                        //self.navigationController?.popToViewController(rootVC, animated: true)
-                    }
+                switch parameterNumber {
+                case 1:
+                    updateParameters(for: .genre)
+                case 2:
+                    updateParameters(for: .certification)
+                    dismiss(animated: true, completion: nil)
+                default:
+                    break
                 }
                 vc.parameterNumber = parameterNumber + 1
+                vc.test = "param2"
             }
         }
+    }
+    
+    // MARK: - Helper Functions
+    
+    func rootViewController() -> ViewController? {
+        if let rootNavVC = UIApplication.shared.keyWindow!.rootViewController as? UINavigationController, let rootVC = rootNavVC.viewControllers.first as? ViewController {
+            return rootVC
+        } else {
+            return nil
+        }
+        
+    }
+    
+    func getItemsFromSelectedParameters() -> [Item] {
+        var items = [Item]()
+        for i in selectedParameters {
+            items.append(dataSource.object(at: IndexPath(row: i, section: 0)))
+            print(dataSource.object(at: IndexPath(row: i, section: 0)))
+        }
+        return items
+    }
+    
+    func updateParameters(for parameterType: ParemeterType) {
+        
+        if let rootVC = rootViewController() {
+            switch parameterType {
+            case .genre:
+                rootVC.genres.append(contentsOf: (getItemsFromSelectedParameters() as! [Genre]))
+            case .certification:
+                rootVC.certification.append(contentsOf: getItemsFromSelectedParameters() as! [Certification])
+            }
+        }
+        
+        
     }
     
 

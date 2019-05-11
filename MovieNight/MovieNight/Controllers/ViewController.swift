@@ -16,11 +16,8 @@ class ViewController: UIViewController {
     var genres = [Genre]()
     var certification = [Certification]()
     
-    var testVC = "Yo"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(testVC)
         
     }
     

@@ -180,6 +180,9 @@
                         <color key="barTintColor" red="0.70003944640000004" green="0.36914008860000003" blue="0.35685116049999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bPm-gL-msH">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="lkh-0l-sGw" kind="relationship" relationship="rootViewController" id="Q6Q-dJ-5Tp"/>
                     </connections>

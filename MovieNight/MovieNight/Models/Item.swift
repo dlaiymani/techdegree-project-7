@@ -12,3 +12,9 @@ import Foundation
 protocol Item: NSObject, JSONDecodable {
     var name: String { get }
 }
+
+
+enum ParemeterType {
+    case genre
+    case certification
+}
