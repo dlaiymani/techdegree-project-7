@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 class SelectParametersDataSource: NSObject, UITableViewDataSource {
-    private var data: [Genre]
+    private var data: [Item]
     
-    init(data: [Genre]) {
+    init(data: [Item]) {
         self.data = data
         super.init()
     }
@@ -30,9 +30,9 @@ class SelectParametersDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "genreCell", for: indexPath)
         
-        let genre = object(at: indexPath)
+        let item = object(at: indexPath)
         
-        cell.textLabel?.text = genre.name
+        cell.textLabel?.text = item.name
         cell.accessoryType = .none
         
         return cell
@@ -42,15 +42,15 @@ class SelectParametersDataSource: NSObject, UITableViewDataSource {
     
     // MARK: Helpers
     
-    func update(_ object: Genre, at indexPath: IndexPath) {
+    func update(_ object: Item, at indexPath: IndexPath) {
         data[indexPath.row] = object
     }
     
-    func updateData(_ data: [Genre]) {
+    func updateData(_ data: [Item]) {
         self.data = data
     }
     
-    func object(at indexPath: IndexPath) -> Genre {
+    func object(at indexPath: IndexPath) -> Item {
         return data[indexPath.row]
     }
 }

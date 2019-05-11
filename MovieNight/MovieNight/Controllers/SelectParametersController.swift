@@ -23,14 +23,35 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         return SelectParametersDataSource(data: [])
     }()
     
-    var selectedParameters = [Genre]()
+    var selectedParameters = [Int]()
+    
+    var test = "param1"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = dataSource
         self.tableView.delegate = self
-        nextButton.isEnabled = false
+       // nextButton.isEnabled = false
 
+        if test == "param2" {
+            client.searchCertifications() { [weak self] result in
+                switch result {
+                case .success(let certification):
+                    self?.dataSource.updateData(certification)
+                    self?.tableView.reloadData()
+                    //                self?.dataSource.update(with: businesses)
+                    //                self?.tableView.reloadData()
+                    //
+                    //                self?.mapView.removeAnnotations(self!.mapView.annotations)
+                //                self?.mapView.addAnnotations(businesses)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        } else {
+        
+        
+        
         client.searchGenres() { [weak self] result in
             switch result {
             case .success(let genres):
@@ -44,6 +65,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
             case .failure(let error):
                 print(error)
             }
+        }
         }
     }
     
@@ -64,12 +86,11 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
             if cell.accessoryType == .none {
                 if selectedParameters.count < 5 {
                     cell.accessoryType = .checkmark
-                    selectedParameters.append(dataSource.object(at: indexPath))
+                    selectedParameters.append(indexPath.row)
                 }
             } else {
                 cell.accessoryType = .none
-                let item = dataSource.object(at: indexPath)
-                let index = selectedParameters.firstIndex(of: item)
+                let index = selectedParameters.firstIndex(of: indexPath.row)
                 if let index = index {
                     selectedParameters.remove(at: index)
                 }
@@ -83,51 +104,20 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         }
     }
 
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "nextParameterSegue" {
+            if let vc = segue.destination as? SelectParametersController {
+                vc.test = "param2"
+                for i in selectedParameters {
+                    print(i)
+                }
+            }
+        }
     }
-    */
+    
 
 }

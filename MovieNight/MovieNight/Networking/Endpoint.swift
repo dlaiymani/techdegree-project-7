@@ -40,7 +40,8 @@ extension Endpoint {
 }
 
 enum Imdb {
-    case search(apiKey: String)
+    case searchGenres(apiKey: String)
+    case searchCertifications(apiKey: String)
 }
 
 extension Imdb: Endpoint {
@@ -50,13 +51,14 @@ extension Imdb: Endpoint {
     
     var path: String {
         switch self {
-        case .search: return "/3/genre/movie/list"
+        case .searchGenres: return "/3/genre/movie/list"
+        case .searchCertifications: return "/3/certification/movie/list"
         }
     }
     
     var queryItems: [URLQueryItem] {
         switch self {
-        case .search(let apiKey):
+        case .searchGenres(let apiKey), .searchCertifications(let apiKey):
             return [
                 URLQueryItem(name: "api_key", value: apiKey),
             ]

@@ -23,7 +23,7 @@ class ImdbClient: APIClient {
     
     func searchGenres(completion: @escaping (Result<[Genre], APIError>)  -> Void) {
         
-        let endpoint = Imdb.search(apiKey: apiKey)
+        let endpoint = Imdb.searchGenres(apiKey: apiKey)
         let request = endpoint.request
                 
         fetch(with: request, parse: { json -> [Genre] in
@@ -31,7 +31,18 @@ class ImdbClient: APIClient {
             return genres.compactMap { Genre(json: $0) }
             
         }, completion: completion)
-        
     }
     
+    
+    func searchCertifications(completion: @escaping (Result<[Certification], APIError>)  -> Void) {
+        
+        let endpoint = Imdb.searchCertifications(apiKey: apiKey)
+        let request = endpoint.request
+        
+        fetch(with: request, parse: { json -> [Certification] in
+            guard let certifications = json["certifications"] as? [String: Any], let USCertifications = certifications["US"] as? [[String: Any]] else { return [] }
+            return USCertifications.compactMap { Certification(json: $0) }
+            
+        }, completion: completion)
+    }
 }

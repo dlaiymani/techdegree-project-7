@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Genre: NSObject, JSONDecodable {
+class Genre: NSObject, Item {
     
     let id: Int
     let name: String

@@ -126,6 +126,9 @@
                     <navigationItem key="navigationItem" title="Select Genres" id="SUY-5c-Oap">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="Zsd-qw-HzU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="lkh-0l-sGw" kind="show" identifier="nextParameterSegue" id="bH0-aE-rQ9"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

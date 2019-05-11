@@ -20,6 +20,8 @@
 		AAF23BA12285C8FC00667B99 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BA02285C8FC00667B99 /* Genre.swift */; };
 		AAF23BA32285CA6400667B99 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BA22285CA6400667B99 /* Result.swift */; };
 		AAF23BA62286936800667B99 /* SelectParametersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BA52286936800667B99 /* SelectParametersDataSource.swift */; };
+		AAF23BA82286B6D100667B99 /* Certification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BA72286B6D100667B99 /* Certification.swift */; };
+		AAF23BAA2286BC5500667B99 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BA92286BC5500667B99 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		AAF23BA02285C8FC00667B99 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		AAF23BA22285CA6400667B99 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		AAF23BA52286936800667B99 /* SelectParametersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectParametersDataSource.swift; sourceTree = "<group>"; };
+		AAF23BA72286B6D100667B99 /* Certification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Certification.swift; sourceTree = "<group>"; };
+		AAF23BA92286BC5500667B99 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				AAF23BA02285C8FC00667B99 /* Genre.swift */,
+				AAF23BA72286B6D100667B99 /* Certification.swift */,
+				AAF23BA92286BC5500667B99 /* Item.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +201,8 @@
 				AAF23B842285AF8100667B99 /* ViewController.swift in Sources */,
 				AAF23BA62286936800667B99 /* SelectParametersDataSource.swift in Sources */,
 				AAF23B822285AF8100667B99 /* AppDelegate.swift in Sources */,
+				AAF23BAA2286BC5500667B99 /* Item.swift in Sources */,
+				AAF23BA82286B6D100667B99 /* Certification.swift in Sources */,
 				AAF23B9E2285C79C00667B99 /* ImdbClient.swift in Sources */,
 				AAF23B942285BE5600667B99 /* SelectParametersController.swift in Sources */,
 				AAF23B9A2285BFB200667B99 /* APIClient.swift in Sources */,
