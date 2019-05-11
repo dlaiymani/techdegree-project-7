@@ -8,19 +8,34 @@
 
 import UIKit
 
-class SelectParametersController: UITableViewController {
+class SelectParametersController: UIViewController, UITableViewDelegate {
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nextButton: UIBarButtonItem!
+    @IBOutlet weak var nummberOfSelectedItemsLabel: UILabel!
     
     lazy var client: ImdbClient = {
         return ImdbClient(configuration: .default)
     }()
+    
+    lazy var dataSource: SelectParametersDataSource = {
+        return SelectParametersDataSource(data: [])
+    }()
+    
+    var selectedParameters = [Genre]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.dataSource = dataSource
+        self.tableView.delegate = self
+        nextButton.isEnabled = false
 
         client.searchGenres() { [weak self] result in
             switch result {
             case .success(let genres):
-                print(genres[0].name)
+                self?.dataSource.updateData(genres)
+                self?.tableView.reloadData()
 //                self?.dataSource.update(with: businesses)
 //                self?.tableView.reloadData()
 //
@@ -29,7 +44,6 @@ class SelectParametersController: UITableViewController {
             case .failure(let error):
                 print(error)
             }
-        
         }
     }
     
@@ -37,27 +51,39 @@ class SelectParametersController: UITableViewController {
         navigationController?.navigationBar.barStyle = .black
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
-    }
-
+    // MARK: - TableView delegate
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "genreCell", for: indexPath)
-
-        cell.textLabel?.text = "toto"
-
-        return cell
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+          //  cell.accessoryType = .none
+        }
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            
+            if cell.accessoryType == .none {
+                if selectedParameters.count < 5 {
+                    cell.accessoryType = .checkmark
+                    selectedParameters.append(dataSource.object(at: indexPath))
+                }
+            } else {
+                cell.accessoryType = .none
+                let item = dataSource.object(at: indexPath)
+                let index = selectedParameters.firstIndex(of: item)
+                if let index = index {
+                    selectedParameters.remove(at: index)
+                }
+            }
+            nummberOfSelectedItemsLabel.text = "\(selectedParameters.count) of 5 selected"
+            if selectedParameters.count == 5 {
+                nextButton.isEnabled = true
+            } else {
+                nextButton.isEnabled = false
+            }
+        }
+    }
+
+
 
     /*
     // Override to support conditional editing of the table view.

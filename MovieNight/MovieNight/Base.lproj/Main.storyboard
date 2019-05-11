@@ -35,6 +35,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUn-t8-zP4">
                                 <rect key="frame" x="26" y="399" width="124" height="98"/>
                                 <state key="normal" backgroundImage="bubble-empty"/>
+                                <state key="selected" backgroundImage="bubble-selected"/>
                                 <connections>
                                     <segue destination="0ue-eD-a1A" kind="presentation" id="Ezv-hk-CAV"/>
                                 </connections>
@@ -127,6 +128,11 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nextButton" destination="Zsd-qw-HzU" id="vw7-TQ-GI0"/>
+                        <outlet property="nummberOfSelectedItemsLabel" destination="MKt-9d-0qw" id="lEh-JE-5zQ"/>
+                        <outlet property="tableView" destination="Ug5-xe-22R" id="eAE-MW-eut"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTm-nM-jMQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -174,5 +180,6 @@
     <resources>
         <image name="background" width="375.5" height="667.5"/>
         <image name="bubble-empty" width="123.5" height="97.5"/>
+        <image name="bubble-selected" width="123.5" height="97.5"/>
     </resources>
 </document>

@@ -33,6 +33,7 @@ class SelectParametersDataSource: NSObject, UITableViewDataSource {
         let genre = object(at: indexPath)
         
         cell.textLabel?.text = genre.name
+        cell.accessoryType = .none
         
         return cell
     }
