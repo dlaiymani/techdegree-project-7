@@ -37,12 +37,17 @@
                                 <state key="normal" backgroundImage="bubble-empty"/>
                                 <state key="selected" backgroundImage="bubble-selected"/>
                                 <connections>
-                                    <segue destination="0ue-eD-a1A" kind="presentation" id="Ezv-hk-CAV"/>
+                                    <action selector="userButtonTapped:" destination="uth-gW-Teq" eventType="touchUpInside" id="x05-10-jgy"/>
+                                    <segue destination="dgr-Xe-TXY" kind="presentation" id="fsY-6t-4Xz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJL-V2-Lm9">
                                 <rect key="frame" x="264" y="399" width="124" height="98"/>
                                 <state key="normal" backgroundImage="bubble-empty"/>
+                                <connections>
+                                    <action selector="userButtonTapped:" destination="uth-gW-Teq" eventType="touchUpInside" id="yNr-8j-obk"/>
+                                    <segue destination="dgr-Xe-TXY" kind="presentation" id="h1n-lv-WSQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -66,6 +71,10 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="user1Button" destination="iUn-t8-zP4" id="ai9-80-PG8"/>
+                        <outlet property="user2Button" destination="jJL-V2-Lm9" id="qZ2-cF-2Hn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="66F-Ua-L4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -127,7 +136,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Next" id="Zsd-qw-HzU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="lkh-0l-sGw" kind="show" identifier="nextParameterSegue" id="bH0-aE-rQ9"/>
+                                <segue destination="lkh-0l-sGw" kind="show" identifier="nextParameterSegue" id="HWl-tL-w6y"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -139,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTm-nM-jMQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3452" y="125"/>
+            <point key="canvasLocation" x="3574" y="125"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lF5-PP-rQL">
@@ -161,23 +170,23 @@
             <point key="canvasLocation" x="596" y="125"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="0KX-yn-arA">
+        <scene sceneID="hCP-c1-1yH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0ue-eD-a1A" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dgr-Xe-TXY" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tAf-Qb-aab">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="baL-J0-OWP">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.70003944640000004" green="0.36914008860000003" blue="0.35685116049999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="lkh-0l-sGw" kind="relationship" relationship="rootViewController" id="7dF-uu-1sp"/>
+                        <segue destination="lkh-0l-sGw" kind="relationship" relationship="rootViewController" id="Q6Q-dJ-5Tp"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k7o-Db-ohK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6da-v0-AbW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2538" y="125"/>
+            <point key="canvasLocation" x="2517" y="125"/>
         </scene>
     </scenes>
     <resources>
@@ -185,4 +194,7 @@
         <image name="bubble-empty" width="123.5" height="97.5"/>
         <image name="bubble-selected" width="123.5" height="97.5"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="h1n-lv-WSQ"/>
+    </inferredMetricsTieBreakers>
 </document>

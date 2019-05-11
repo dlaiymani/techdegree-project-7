@@ -24,6 +24,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     }()
     
     var selectedParameters = [Int]()
+    var parameterNumber = 1
     
     var test = "param1"
 
@@ -112,9 +113,28 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         if segue.identifier == "nextParameterSegue" {
             if let vc = segue.destination as? SelectParametersController {
                 vc.test = "param2"
-                for i in selectedParameters {
-                    print(i)
+                
+                if let rootNavVC = UIApplication.shared.keyWindow!.rootViewController as? UINavigationController, let rootVC = rootNavVC.viewControllers.first as? ViewController {
+                    
+                    if parameterNumber == 1 {
+                        var genres = [Genre]()
+                        for i in selectedParameters {
+                            genres.append(dataSource.object(at: IndexPath(row: i, section: 0)) as! Genre)
+                        }
+                        rootVC.genres.append(contentsOf: genres)
+                    }
+                    
+                    if parameterNumber == 2 {
+                        var certifications = [Certification]()
+                        for i in selectedParameters {
+                            certifications.append(dataSource.object(at: IndexPath(row: i, section: 0)) as! Certification)
+                        }
+                        rootVC.certification.append(contentsOf: certifications)
+                        dismiss(animated: true, completion: nil)
+                        //self.navigationController?.popToViewController(rootVC, animated: true)
+                    }
                 }
+                vc.parameterNumber = parameterNumber + 1
             }
         }
     }
