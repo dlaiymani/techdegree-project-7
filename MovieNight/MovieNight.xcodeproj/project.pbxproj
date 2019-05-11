@@ -19,6 +19,7 @@
 		AAF23B9E2285C79C00667B99 /* ImdbClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23B9D2285C79C00667B99 /* ImdbClient.swift */; };
 		AAF23BA12285C8FC00667B99 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BA02285C8FC00667B99 /* Genre.swift */; };
 		AAF23BA32285CA6400667B99 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BA22285CA6400667B99 /* Result.swift */; };
+		AAF23BA62286936800667B99 /* SelectParametersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BA52286936800667B99 /* SelectParametersDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		AAF23B9D2285C79C00667B99 /* ImdbClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImdbClient.swift; sourceTree = "<group>"; };
 		AAF23BA02285C8FC00667B99 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		AAF23BA22285CA6400667B99 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		AAF23BA52286936800667B99 /* SelectParametersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectParametersDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		AAF23B802285AF8100667B99 /* MovieNight */ = {
 			isa = PBXGroup;
 			children = (
+				AAF23BA42286934600667B99 /* Data Sources */,
 				AAF23B9F2285C8EB00667B99 /* Models */,
 				AAF23B962285BF5B00667B99 /* Networking */,
 				AAF23B952285BEC200667B99 /* Controllers */,
@@ -107,6 +110,14 @@
 				AAF23BA02285C8FC00667B99 /* Genre.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		AAF23BA42286934600667B99 /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AAF23BA52286936800667B99 /* SelectParametersDataSource.swift */,
+			);
+			path = "Data Sources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +193,7 @@
 			files = (
 				AAF23BA32285CA6400667B99 /* Result.swift in Sources */,
 				AAF23B842285AF8100667B99 /* ViewController.swift in Sources */,
+				AAF23BA62286936800667B99 /* SelectParametersDataSource.swift in Sources */,
 				AAF23B822285AF8100667B99 /* AppDelegate.swift in Sources */,
 				AAF23B9E2285C79C00667B99 /* ImdbClient.swift in Sources */,
 				AAF23B942285BE5600667B99 /* SelectParametersController.swift in Sources */,
