@@ -78,14 +78,22 @@ extension Imdb: Endpoint {
             let certificationsString = certificationsStringArray.joined(separator: ",")
             let actorsStringArray = actors.map { String($0.id) }
             let actorsString = actorsStringArray.joined(separator: ",")
-            return [
-                URLQueryItem(name: "api_key", value: apiKey),
-                URLQueryItem(name: "with_genres", value: genresString),
-                URLQueryItem(name: "certification_country", value: "US"),
-                URLQueryItem(name: "certification.gte", value: certificationsString),
-                URLQueryItem(name: "with_cast", value: actorsString),
-            ]
             
+            var queryItemArray = [URLQueryItem(name: "api_key", value: apiKey),
+                                  URLQueryItem(name: "certification_country", value: "US")]
+            
+            queryItemArray.append(contentsOf: genres.map { URLQueryItem(name: "with_genres", value: String($0.id)) })
+            queryItemArray.append(contentsOf: certifications.map { URLQueryItem(name: "certification.gte", value: String($0.name))})
+            queryItemArray.append(contentsOf: actors.map { URLQueryItem(name: "with_cast", value: String($0.id))})
+
+            return queryItemArray
+//            return [
+//                URLQueryItem(name: "api_key", value: apiKey),
+//                URLQueryItem(name: "with_genres", value: genresString),
+//                URLQueryItem(name: "certification_country", value: "US"),
+//                URLQueryItem(name: "certification.gte", value: certificationsString),
+//                URLQueryItem(name: "with_cast", value: actorsString),
+//            ]
         }
     }
     

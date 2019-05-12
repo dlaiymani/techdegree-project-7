@@ -66,6 +66,8 @@ class ImdbClient: APIClient {
         
         print(request)
         
+        print(request)
+        
         fetch(with: request, parse: { json -> [Movie] in
             guard let movies = json["results"] as? [[String: Any]] else { return [] }
             return movies.compactMap { Movie(json: $0) }
