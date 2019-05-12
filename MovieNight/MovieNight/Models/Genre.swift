@@ -22,4 +22,7 @@ class Genre: NSObject, Item {
         super.init()
     }
     
+    override func isEqual(_ object: Any?) -> Bool {
+        return id == (object as? Genre)?.id
+    }
 }

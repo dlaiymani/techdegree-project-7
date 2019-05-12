@@ -45,4 +45,17 @@ class ImdbClient: APIClient {
             
         }, completion: completion)
     }
+    
+    func discoverMovies(genres: [Genre], certifications: [Certification], completion: @escaping (Result<[Movie], APIError>)  -> Void) {
+        
+        let endpoint = Imdb.discoverMovies(apiKey: apiKey, genres: genres, certifications: certifications)
+        let request = endpoint.request
+        
+        fetch(with: request, parse: { json -> [Movie] in
+            guard let movies = json["results"] as? [[String: Any]] else { return [] }
+            return movies.compactMap { Movie(json: $0) }
+            
+        }, completion: completion)
+    }
+    
 }

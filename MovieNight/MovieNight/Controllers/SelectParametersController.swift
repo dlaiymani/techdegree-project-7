@@ -32,7 +32,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         self.tableView.dataSource = dataSource
         self.tableView.delegate = self
-       // nextButton.isEnabled = false
+        nextButton.isEnabled = false
         self.navigationItem.hidesBackButton = true
 
         if parameterNumber == 2 {
@@ -139,7 +139,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
             case .genre:
                 rootVC.genres.append(contentsOf: (getItemsFromSelectedParameters() as! [Genre]))
             case .certification:
-                rootVC.certification.append(contentsOf: getItemsFromSelectedParameters() as! [Certification])
+                rootVC.certifications.append(contentsOf: getItemsFromSelectedParameters() as! [Certification])
             }
         }
         

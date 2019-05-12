@@ -20,4 +20,8 @@ class Certification: NSObject, Item {
         super.init()
     }
     
+    override func isEqual(_ object: Any?) -> Bool {
+        return name == (object as? Certification)?.name
+    }
+    
 }

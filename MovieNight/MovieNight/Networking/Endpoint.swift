@@ -42,6 +42,7 @@ extension Endpoint {
 enum Imdb {
     case searchGenres(apiKey: String)
     case searchCertifications(apiKey: String)
+    case discoverMovies(apiKey: String, genres: [Genre], certifications: [Certification])
 }
 
 extension Imdb: Endpoint {
@@ -53,6 +54,7 @@ extension Imdb: Endpoint {
         switch self {
         case .searchGenres: return "/3/genre/movie/list"
         case .searchCertifications: return "/3/certification/movie/list"
+        case .discoverMovies: return "/3/discover/movie"
         }
     }
     
@@ -60,8 +62,22 @@ extension Imdb: Endpoint {
         switch self {
         case .searchGenres(let apiKey), .searchCertifications(let apiKey):
             return [
-                URLQueryItem(name: "api_key", value: apiKey),
+                URLQueryItem(name: "api_key", value: apiKey)
             ]
+        case .discoverMovies(let apiKey, let genres, let certifications):
+            let genresStringArray = genres.map { String($0.id) }
+            let genresString = genresStringArray.joined(separator: ",")
+            let certificationsStringArray = certifications.map { String($0.name) }
+            let certificationsString = certificationsStringArray.joined(separator: ",")
+            return [
+                URLQueryItem(name: "api_key", value: apiKey),
+                URLQueryItem(name: "with_genres", value: genresString),
+                URLQueryItem(name: "certification_country", value: "US"),
+                URLQueryItem(name: "certification", value: certificationsString)
+            ]
+            
         }
     }
+    
+    
 }
