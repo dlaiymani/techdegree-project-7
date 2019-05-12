@@ -28,6 +28,7 @@
 		AAF23BB32288068600667B99 /* MovieListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BB22288068600667B99 /* MovieListDataSource.swift */; };
 		AAF23BB52288169A00667B99 /* PendingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BB42288169A00667B99 /* PendingOperation.swift */; };
 		AAF23BB7228816E700667B99 /* PosterDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BB6228816E700667B99 /* PosterDownloader.swift */; };
+		AAF23BB922881FBC00667B99 /* DetailMovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BB822881FBC00667B99 /* DetailMovieController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		AAF23BB22288068600667B99 /* MovieListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDataSource.swift; sourceTree = "<group>"; };
 		AAF23BB42288169A00667B99 /* PendingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOperation.swift; sourceTree = "<group>"; };
 		AAF23BB6228816E700667B99 /* PosterDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterDownloader.swift; sourceTree = "<group>"; };
+		AAF23BB822881FBC00667B99 /* DetailMovieController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				AAF23B832285AF8100667B99 /* ViewController.swift */,
 				AAF23B932285BE5600667B99 /* SelectParametersController.swift */,
 				AAF23BB02288065600667B99 /* MovieListController.swift */,
+				AAF23BB822881FBC00667B99 /* DetailMovieController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				AAF23B9E2285C79C00667B99 /* ImdbClient.swift in Sources */,
 				AAF23B942285BE5600667B99 /* SelectParametersController.swift in Sources */,
 				AAF23B9A2285BFB200667B99 /* APIClient.swift in Sources */,
+				AAF23BB922881FBC00667B99 /* DetailMovieController.swift in Sources */,
 				AAF23B9C2285BFFD00667B99 /* Endpoint.swift in Sources */,
 				AAF23B982285BF8700667B99 /* JSONDecodable.swift in Sources */,
 				AAF23BAD2287F26C00667B99 /* Array+Extension.swift in Sources */,

@@ -117,6 +117,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="mcC-5L-5S2" kind="show" identifier="DetailMovieSegue" id="wES-5v-VFv"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -128,6 +131,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5s-tj-FC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1558" y="856"/>
+        </scene>
+        <!--Detail Movie Controller-->
+        <scene sceneID="duf-qZ-K0I">
+            <objects>
+                <viewController id="mcC-5L-5S2" customClass="DetailMovieController" customModule="MovieNight" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qch-Bf-P0D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="83k-NH-bXo">
+                                <rect key="frame" x="115" y="108" width="184" height="198"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PW7-i9-SiZ">
+                                <rect key="frame" x="183.5" y="326" width="47" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5I-1t-h6U">
+                                <rect key="frame" x="16" y="376" width="382" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="0cz-ie-fcf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="H5I-1t-h6U" firstAttribute="leading" secondItem="IUv-Ti-FPN" secondAttribute="leading" constant="16" id="10w-Wj-kLW"/>
+                            <constraint firstItem="PW7-i9-SiZ" firstAttribute="centerX" secondItem="qch-Bf-P0D" secondAttribute="centerX" id="8J0-c4-YDm"/>
+                            <constraint firstItem="H5I-1t-h6U" firstAttribute="top" secondItem="PW7-i9-SiZ" secondAttribute="bottom" constant="20" id="CPn-ZZ-TX9"/>
+                            <constraint firstItem="IUv-Ti-FPN" firstAttribute="bottom" secondItem="83k-NH-bXo" secondAttribute="bottom" constant="556" id="DG8-MP-BBX"/>
+                            <constraint firstItem="PW7-i9-SiZ" firstAttribute="top" secondItem="83k-NH-bXo" secondAttribute="bottom" constant="20" id="FFr-6I-K3c"/>
+                            <constraint firstItem="H5I-1t-h6U" firstAttribute="centerX" secondItem="qch-Bf-P0D" secondAttribute="centerX" id="Fur-il-az3"/>
+                            <constraint firstItem="83k-NH-bXo" firstAttribute="centerX" secondItem="qch-Bf-P0D" secondAttribute="centerX" id="QPc-Sl-55R"/>
+                            <constraint firstItem="83k-NH-bXo" firstAttribute="top" secondItem="IUv-Ti-FPN" secondAttribute="top" constant="20" id="fWY-SH-tRI"/>
+                            <constraint firstItem="83k-NH-bXo" firstAttribute="leading" secondItem="IUv-Ti-FPN" secondAttribute="leading" constant="115" id="m1b-YH-QMA"/>
+                            <constraint firstItem="IUv-Ti-FPN" firstAttribute="trailing" secondItem="H5I-1t-h6U" secondAttribute="trailing" constant="16" id="s5Q-6M-5D3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IUv-Ti-FPN"/>
+                    </view>
+                    <connections>
+                        <outlet property="overviewLabel" destination="H5I-1t-h6U" id="cuY-Yc-zGc"/>
+                        <outlet property="posterImage" destination="83k-NH-bXo" id="Hbi-X4-7A4"/>
+                        <outlet property="titleLabel" destination="PW7-i9-SiZ" id="Yo1-fI-Mzl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W44-Tk-mnh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2589.8550724637685" y="855.80357142857144"/>
         </scene>
         <!--Select Genres-->
         <scene sceneID="xQK-f6-1E2">
