@@ -42,7 +42,8 @@ extension Endpoint {
 enum Imdb {
     case searchGenres(apiKey: String)
     case searchCertifications(apiKey: String)
-    case discoverMovies(apiKey: String, genres: [Genre], certifications: [Certification])
+    case searchPopularActors(apiKey: String)
+    case discoverMovies(apiKey: String, genres: [Genre], certifications: [Certification], actors: [Actor])
 }
 
 extension Imdb: Endpoint {
@@ -54,6 +55,7 @@ extension Imdb: Endpoint {
         switch self {
         case .searchGenres: return "/3/genre/movie/list"
         case .searchCertifications: return "/3/certification/movie/list"
+        case .searchPopularActors: return "/3/person/popular"
         case .discoverMovies: return "/3/discover/movie"
         }
     }
@@ -64,16 +66,24 @@ extension Imdb: Endpoint {
             return [
                 URLQueryItem(name: "api_key", value: apiKey)
             ]
-        case .discoverMovies(let apiKey, let genres, let certifications):
+        case .searchPopularActors(let apiKey):
+            return [
+                URLQueryItem(name: "api_key", value: apiKey),
+                URLQueryItem(name: "language", value: "en-US")
+            ]
+        case .discoverMovies(let apiKey, let genres, let certifications, let actors):
             let genresStringArray = genres.map { String($0.id) }
             let genresString = genresStringArray.joined(separator: ",")
             let certificationsStringArray = certifications.map { String($0.name) }
             let certificationsString = certificationsStringArray.joined(separator: ",")
+            let actorsStringArray = actors.map { String($0.id) }
+            let actorsString = actorsStringArray.joined(separator: ",")
             return [
                 URLQueryItem(name: "api_key", value: apiKey),
                 URLQueryItem(name: "with_genres", value: genresString),
                 URLQueryItem(name: "certification_country", value: "US"),
-                URLQueryItem(name: "certification", value: certificationsString)
+                URLQueryItem(name: "certification.gte", value: certificationsString),
+                URLQueryItem(name: "with_cast", value: actorsString),
             ]
             
         }

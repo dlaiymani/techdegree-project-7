@@ -17,4 +17,5 @@ protocol Item: NSObject, JSONDecodable {
 enum ParemeterType {
     case genre
     case certification
+    case popularActors
 }

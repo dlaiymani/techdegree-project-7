@@ -27,7 +27,6 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     var parameterNumber = 1
     var numberOfParametersToSelect = 1
     
-    var test = "param1"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +35,20 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         nextButton.isEnabled = false
         self.navigationItem.hidesBackButton = true
         self.tableView.tintColor = .blue
-
-        if parameterNumber == 2 {
+        
+        switch parameterNumber {
+        case 1:
+            numberOfParametersToSelect = 3
+            client.searchGenres() { [weak self] result in
+                switch result {
+                case .success(let genres):
+                    self?.dataSource.updateData(genres)
+                    self?.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        case 2:
             numberOfParametersToSelect = 1
             client.searchCertifications() { [weak self] result in
                 switch result {
@@ -48,17 +59,19 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                     print(error)
                 }
             }
-        } else {
-        numberOfParametersToSelect = 3
-        client.searchGenres() { [weak self] result in
-            switch result {
-            case .success(let genres):
-                self?.dataSource.updateData(genres)
-                self?.tableView.reloadData()
-            case .failure(let error):
-                print(error)
+        case 3:
+            numberOfParametersToSelect = 3
+            client.searchPopularActors() { [weak self] result in
+                switch result {
+                case .success(let actors):
+                    self?.dataSource.updateData(actors)
+                    self?.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
             }
-        }
+        default:
+            break
         }
     }
     
@@ -105,12 +118,14 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                     updateParameters(for: .genre)
                 case 2:
                     updateParameters(for: .certification)
+                    //dismiss(animated: true, completion: nil)
+                case 3:
+                    updateParameters(for: .popularActors)
                     dismiss(animated: true, completion: nil)
                 default:
                     break
                 }
                 vc.parameterNumber = parameterNumber + 1
-                vc.test = "param2"
             }
         }
     }
@@ -143,6 +158,8 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                 rootVC.genres.append(contentsOf: (getItemsFromSelectedParameters() as! [Genre]))
             case .certification:
                 rootVC.certifications.append(contentsOf: getItemsFromSelectedParameters() as! [Certification])
+            case .popularActors:
+                rootVC.popularActors.append(contentsOf: getItemsFromSelectedParameters() as! [Actor])
             }
         }
         

@@ -21,6 +21,7 @@ class MovieListController: UITableViewController {
     
     var genres = [Genre]()
     var certifications = [Certification]()
+    var popularActors = [Actor]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,7 @@ class MovieListController: UITableViewController {
         self.tableView.dataSource = dataSource
 
         
-        client.discoverMovies(genres: genres, certifications: certifications) { [weak self] result in
+        client.discoverMovies(genres: genres, certifications: certifications, popularActores: popularActors) { [weak self] result in
             switch result {
             case .success(let movies):
                 print(movies.count)

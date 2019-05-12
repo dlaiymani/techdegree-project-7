@@ -14,7 +14,6 @@ extension Array where Element:Equatable {
         
         for value in self {
             if result.contains(value) == false {
-                print("yo")
                 result.append(value)
             }
         }

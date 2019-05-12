@@ -29,6 +29,7 @@
 		AAF23BB52288169A00667B99 /* PendingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BB42288169A00667B99 /* PendingOperation.swift */; };
 		AAF23BB7228816E700667B99 /* PosterDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BB6228816E700667B99 /* PosterDownloader.swift */; };
 		AAF23BB922881FBC00667B99 /* DetailMovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BB822881FBC00667B99 /* DetailMovieController.swift */; };
+		AAF23BBB22883E2B00667B99 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BBA22883E2B00667B99 /* Actor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		AAF23BB42288169A00667B99 /* PendingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOperation.swift; sourceTree = "<group>"; };
 		AAF23BB6228816E700667B99 /* PosterDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterDownloader.swift; sourceTree = "<group>"; };
 		AAF23BB822881FBC00667B99 /* DetailMovieController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieController.swift; sourceTree = "<group>"; };
+		AAF23BBA22883E2B00667B99 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				AAF23BA72286B6D100667B99 /* Certification.swift */,
 				AAF23BA92286BC5500667B99 /* Item.swift */,
 				AAF23BAE2287F95A00667B99 /* Movie.swift */,
+				AAF23BBA22883E2B00667B99 /* Actor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				AAF23BB7228816E700667B99 /* PosterDownloader.swift in Sources */,
 				AAF23BA12285C8FC00667B99 /* Genre.swift in Sources */,
 				AAF23BB32288068600667B99 /* MovieListDataSource.swift in Sources */,
+				AAF23BBB22883E2B00667B99 /* Actor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
