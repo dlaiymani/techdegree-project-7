@@ -51,6 +51,8 @@ class ImdbClient: APIClient {
         let endpoint = Imdb.discoverMovies(apiKey: apiKey, genres: genres, certifications: certifications)
         let request = endpoint.request
         
+        print(request)
+        
         fetch(with: request, parse: { json -> [Movie] in
             guard let movies = json["results"] as? [[String: Any]] else { return [] }
             return movies.compactMap { Movie(json: $0) }

@@ -25,8 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         genres = [Genre(json: ["id": 28,"name": "Action"]), Genre(json: ["id": 12,"name": "Adventure"])] as! [Genre]
-        
-        print(genres[0].name)
+        certifications = [Certification(json: ["certification": "NC-17"])] as! [Certification]
         
     }
     
@@ -35,14 +34,17 @@ class ViewController: UIViewController {
         if genres.count > 0 {
             
             // delete duplicate
-            let genresUnique = genres.removeDuplicates()
+            genres = genres.removeDuplicates()
             certifications = certifications.removeDuplicates()
-            print(genresUnique.count)
-            print(certifications.count)
             
-            for genre in genresUnique {
-                print(genre.name)
+            for genre in genres {
+                print(genre.id)
             }
+            
+            for certif in certifications {
+                print(certif.name)
+            }
+            
             
         }
 
@@ -64,7 +66,11 @@ class ViewController: UIViewController {
                 //self?.dataSource.updateData(certification)
                 //self?.tableView.reloadData()
             case .failure(let error):
-                print(error)
+                if error == .jsonParsingFailure {
+                    print("No Match")
+                } else {
+                    print(error)
+                }
             }
         }
     }

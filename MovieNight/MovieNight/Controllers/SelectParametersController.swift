@@ -25,6 +25,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     
     var selectedParameters = [Int]()
     var parameterNumber = 1
+    var numberOfParametersToSelect = 1
     
     var test = "param1"
 
@@ -36,6 +37,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         self.navigationItem.hidesBackButton = true
 
         if parameterNumber == 2 {
+            numberOfParametersToSelect = 1
             client.searchCertifications() { [weak self] result in
                 switch result {
                 case .success(let certification):
@@ -46,7 +48,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                 }
             }
         } else {
-        
+        numberOfParametersToSelect = 3
         client.searchGenres() { [weak self] result in
             switch result {
             case .success(let genres):
@@ -69,7 +71,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         if let cell = tableView.cellForRow(at: indexPath) {
             
             if cell.accessoryType == .none {
-                if selectedParameters.count < 5 {
+                if selectedParameters.count < numberOfParametersToSelect {
                     cell.accessoryType = .checkmark
                     selectedParameters.append(indexPath.row)
                 }
@@ -81,7 +83,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                 }
             }
             nummberOfSelectedItemsLabel.text = "\(selectedParameters.count) of 5 selected"
-            if selectedParameters.count == 5 {
+            if selectedParameters.count == numberOfParametersToSelect {
                 nextButton.isEnabled = true
             } else {
                 nextButton.isEnabled = false
