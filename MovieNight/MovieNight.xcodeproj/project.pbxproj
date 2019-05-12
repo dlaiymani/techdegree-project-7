@@ -24,6 +24,10 @@
 		AAF23BAA2286BC5500667B99 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BA92286BC5500667B99 /* Item.swift */; };
 		AAF23BAD2287F26C00667B99 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BAC2287F26C00667B99 /* Array+Extension.swift */; };
 		AAF23BAF2287F95A00667B99 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BAE2287F95A00667B99 /* Movie.swift */; };
+		AAF23BB12288065600667B99 /* MovieListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BB02288065600667B99 /* MovieListController.swift */; };
+		AAF23BB32288068600667B99 /* MovieListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BB22288068600667B99 /* MovieListDataSource.swift */; };
+		AAF23BB52288169A00667B99 /* PendingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BB42288169A00667B99 /* PendingOperation.swift */; };
+		AAF23BB7228816E700667B99 /* PosterDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BB6228816E700667B99 /* PosterDownloader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		AAF23BA92286BC5500667B99 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		AAF23BAC2287F26C00667B99 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		AAF23BAE2287F95A00667B99 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		AAF23BB02288065600667B99 /* MovieListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListController.swift; sourceTree = "<group>"; };
+		AAF23BB22288068600667B99 /* MovieListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDataSource.swift; sourceTree = "<group>"; };
+		AAF23BB42288169A00667B99 /* PendingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOperation.swift; sourceTree = "<group>"; };
+		AAF23BB6228816E700667B99 /* PosterDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterDownloader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,7 @@
 			children = (
 				AAF23B832285AF8100667B99 /* ViewController.swift */,
 				AAF23B932285BE5600667B99 /* SelectParametersController.swift */,
+				AAF23BB02288065600667B99 /* MovieListController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -109,6 +118,8 @@
 				AAF23B9B2285BFFD00667B99 /* Endpoint.swift */,
 				AAF23B9D2285C79C00667B99 /* ImdbClient.swift */,
 				AAF23BA22285CA6400667B99 /* Result.swift */,
+				AAF23BB42288169A00667B99 /* PendingOperation.swift */,
+				AAF23BB6228816E700667B99 /* PosterDownloader.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -128,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				AAF23BA52286936800667B99 /* SelectParametersDataSource.swift */,
+				AAF23BB22288068600667B99 /* MovieListDataSource.swift */,
 			);
 			path = "Data Sources";
 			sourceTree = "<group>";
@@ -224,7 +236,11 @@
 				AAF23B9C2285BFFD00667B99 /* Endpoint.swift in Sources */,
 				AAF23B982285BF8700667B99 /* JSONDecodable.swift in Sources */,
 				AAF23BAD2287F26C00667B99 /* Array+Extension.swift in Sources */,
+				AAF23BB52288169A00667B99 /* PendingOperation.swift in Sources */,
+				AAF23BB12288065600667B99 /* MovieListController.swift in Sources */,
+				AAF23BB7228816E700667B99 /* PosterDownloader.swift in Sources */,
 				AAF23BA12285C8FC00667B99 /* Genre.swift in Sources */,
+				AAF23BB32288068600667B99 /* MovieListDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

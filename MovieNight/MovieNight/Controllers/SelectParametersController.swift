@@ -35,6 +35,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         self.tableView.delegate = self
         nextButton.isEnabled = false
         self.navigationItem.hidesBackButton = true
+        self.tableView.tintColor = .blue
 
         if parameterNumber == 2 {
             numberOfParametersToSelect = 1
@@ -82,7 +83,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                     selectedParameters.remove(at: index)
                 }
             }
-            nummberOfSelectedItemsLabel.text = "\(selectedParameters.count) of 5 selected"
+            nummberOfSelectedItemsLabel.text = "\(selectedParameters.count) of \(numberOfParametersToSelect) selected"
             if selectedParameters.count == numberOfParametersToSelect {
                 nextButton.isEnabled = true
             } else {

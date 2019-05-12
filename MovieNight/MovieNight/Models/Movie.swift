@@ -7,6 +7,13 @@
 //
 
 import Foundation
+import UIKit
+
+enum MoviePosterState {
+    case placeholder
+    case downloaded
+    case failed
+}
 
 class Movie: NSObject, Item {
     
@@ -15,6 +22,8 @@ class Movie: NSObject, Item {
     let posterPath: String
     let overview: String
     let name: String
+    var poster: UIImage?
+    var posterState = MoviePosterState.placeholder
     
     required init?(json: [String : Any]) {
         guard let id = json["id"] as? Int,

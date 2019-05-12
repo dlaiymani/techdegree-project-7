@@ -24,8 +24,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        genres = [Genre(json: ["id": 28,"name": "Action"]), Genre(json: ["id": 12,"name": "Adventure"])] as! [Genre]
-        certifications = [Certification(json: ["certification": "NC-17"])] as! [Certification]
+     //   genres = [Genre(json: ["id": 28,"name": "Action"]), Genre(json: ["id": 12,"name": "Adventure"])] as! [Genre]
+     //   certifications = [Certification(json: ["certification": "NC-17"])] as! [Certification]
         
     }
     
@@ -37,13 +37,13 @@ class ViewController: UIViewController {
             genres = genres.removeDuplicates()
             certifications = certifications.removeDuplicates()
             
-            for genre in genres {
-                print(genre.id)
-            }
-            
-            for certif in certifications {
-                print(certif.name)
-            }
+//            for genre in genres {
+//                print(genre.id)
+//            }
+//
+//            for certif in certifications {
+//                print(certif.name)
+//            }
             
             
         }
@@ -59,19 +59,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func viewResults(_ sender: UIButton) {
-        client.discoverMovies(genres: genres, certifications: certifications) { [weak self] result in
-            switch result {
-            case .success(let movies):
-                print(movies.count)
-                //self?.dataSource.updateData(certification)
-                //self?.tableView.reloadData()
-            case .failure(let error):
-                if error == .jsonParsingFailure {
-                    print("No Match")
-                } else {
-                    print(error)
-                }
-            }
+        
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MovieListSegue" {
+            let listViewController = segue.destination as? MovieListController
+            listViewController?.genres = genres
+            listViewController?.certifications = certifications
         }
     }
     
