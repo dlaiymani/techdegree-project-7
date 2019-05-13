@@ -14,10 +14,12 @@ class MovieListDataSource: NSObject, UITableViewDataSource {
     let tableView: UITableView
     
     let pendingOperations = PendingOperation()
+    var activityIndicator: UIActivityIndicatorView
     
-    init(data: [Movie], tableView: UITableView) {
+    init(data: [Movie], tableView: UITableView, activityIndicator: UIActivityIndicatorView) {
         self.data = data
         self.tableView = tableView
+        self.activityIndicator = activityIndicator
         super.init()
     }
     
@@ -78,6 +80,10 @@ class MovieListDataSource: NSObject, UITableViewDataSource {
             
             DispatchQueue.main.async {
                 self.pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
+                if self.pendingOperations.downloadsInProgress.count == 0 {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                }
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }

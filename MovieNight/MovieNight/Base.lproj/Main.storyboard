@@ -97,6 +97,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gp4-Gv-fac">
+                                    <rect key="frame" x="197" y="15" width="20" height="20"/>
+                                </activityIndicatorView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TMDBLogo" translatesAutoresizingMaskIntoConstraints="NO" id="2iW-Qq-Xpg">
                                     <rect key="frame" x="270" y="8" width="136" height="42"/>
                                 </imageView>
@@ -104,7 +107,9 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="2iW-Qq-Xpg" secondAttribute="trailing" constant="8" id="EKH-oB-3XH"/>
+                                <constraint firstItem="gp4-Gv-fac" firstAttribute="centerX" secondItem="NpK-0e-BmS" secondAttribute="centerX" id="HMw-d5-Vlz"/>
                                 <constraint firstAttribute="bottom" secondItem="2iW-Qq-Xpg" secondAttribute="bottom" id="ljF-zN-kaL"/>
+                                <constraint firstItem="gp4-Gv-fac" firstAttribute="centerY" secondItem="NpK-0e-BmS" secondAttribute="centerY" id="oQu-I8-fnQ"/>
                                 <constraint firstItem="2iW-Qq-Xpg" firstAttribute="top" secondItem="NpK-0e-BmS" secondAttribute="top" constant="8" id="u2k-Uc-2TF"/>
                             </constraints>
                         </view>
@@ -142,6 +147,9 @@
                             <outlet property="delegate" destination="d5t-Lr-2Ev" id="lCQ-aq-8fx"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="activityIndicator" destination="gp4-Gv-fac" id="2RQ-Yj-8lv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5s-tj-FC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -210,8 +218,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m74-4B-BN0">
                                 <rect key="frame" x="0.0" y="796" width="414" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 of 5 selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKt-9d-0qw">
-                                        <rect key="frame" x="142.5" y="38" width="129.5" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKt-9d-0qw">
+                                        <rect key="frame" x="207" y="50" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -231,6 +239,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="B5k-cf-qdu">
+                                            <rect key="frame" x="197" y="15" width="20" height="20"/>
+                                        </activityIndicatorView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TMDBLogo" translatesAutoresizingMaskIntoConstraints="NO" id="CvZ-tg-QBp">
                                             <rect key="frame" x="270" y="8" width="136" height="42"/>
                                         </imageView>
@@ -238,7 +249,9 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="CvZ-tg-QBp" secondAttribute="bottom" id="4ld-0R-rj6"/>
+                                        <constraint firstItem="B5k-cf-qdu" firstAttribute="centerY" secondItem="fSj-eG-p5v" secondAttribute="centerY" id="Rrs-s0-CxS"/>
                                         <constraint firstItem="CvZ-tg-QBp" firstAttribute="top" secondItem="fSj-eG-p5v" secondAttribute="top" constant="8" id="bfd-Gs-I3c"/>
+                                        <constraint firstItem="B5k-cf-qdu" firstAttribute="centerX" secondItem="fSj-eG-p5v" secondAttribute="centerX" id="urZ-ow-PnY"/>
                                         <constraint firstAttribute="trailing" secondItem="CvZ-tg-QBp" secondAttribute="trailing" constant="8" id="zSr-OY-zPu"/>
                                     </constraints>
                                 </view>
@@ -275,6 +288,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="B5k-cf-qdu" id="sfl-ai-swz"/>
                         <outlet property="nextButton" destination="Zsd-qw-HzU" id="vw7-TQ-GI0"/>
                         <outlet property="nummberOfSelectedItemsLabel" destination="MKt-9d-0qw" id="lEh-JE-5zQ"/>
                         <outlet property="tableView" destination="Ug5-xe-22R" id="eAE-MW-eut"/>

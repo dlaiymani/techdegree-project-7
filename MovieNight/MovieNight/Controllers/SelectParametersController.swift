@@ -15,6 +15,9 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var nextButton: UIBarButtonItem!
     @IBOutlet weak var nummberOfSelectedItemsLabel: UILabel!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     lazy var client: ImdbClient = {
         return ImdbClient(configuration: .default)
     }()
@@ -35,6 +38,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         nextButton.isEnabled = false
         self.navigationItem.hidesBackButton = true
         self.tableView.tintColor = .blue
+        activityIndicator.startAnimating()
         
         switch parameterNumber {
         case 1:
@@ -45,6 +49,8 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                 case .success(let genres):
                     self?.dataSource.updateData(genres)
                     self?.tableView.reloadData()
+                    self?.activityIndicator.stopAnimating()
+                    self?.activityIndicator.isHidden = true
                 case .failure(let error):
                     print(error)
                 }
@@ -57,6 +63,8 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                 case .success(let certification):
                     self?.dataSource.updateData(certification)
                     self?.tableView.reloadData()
+                    self?.activityIndicator.stopAnimating()
+                    self?.activityIndicator.isHidden = true
                 case .failure(let error):
                     print(error)
                 }
@@ -67,9 +75,10 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
             client.searchPopularActors() { [weak self] result in
                 switch result {
                 case .success(let actors):
-                    print("yo")
                     self?.dataSource.appendData(actors)
                     self?.tableView.reloadData()
+                    self?.activityIndicator.stopAnimating()
+                    self?.activityIndicator.isHidden = true
                 case .failure(let error):
                     print(error)
                 }
