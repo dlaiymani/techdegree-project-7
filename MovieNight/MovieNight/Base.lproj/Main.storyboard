@@ -71,6 +71,11 @@
                         <viewLayoutGuide key="safeArea" id="YjF-qh-GuC"/>
                     </view>
                     <navigationItem key="navigationItem" title="Movie Night" id="8Ia-Nh-SII">
+                        <barButtonItem key="leftBarButtonItem" title="Preferences" id="V6u-r9-pVM">
+                            <connections>
+                                <segue destination="r6W-Uu-GLr" kind="presentation" id="EcJ-OG-Nf1"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Clear" id="yRe-9r-hSE">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
@@ -320,7 +325,7 @@
         <!--Choose Your Preferences-->
         <scene sceneID="6es-If-Zbw">
             <objects>
-                <tableViewController id="J1f-03-SIS" sceneMemberID="viewController">
+                <tableViewController id="J1f-03-SIS" customClass="PreferencesController" customModule="MovieNight" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="epj-rR-ksf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -328,15 +333,15 @@
                         <sections>
                             <tableViewSection id="EfD-oV-BBN">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" textLabel="kUr-mh-3lx" style="IBUITableViewCellStyleDefault" id="TgQ-af-uxc">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="preferenceCell" textLabel="kUr-mh-3lx" style="IBUITableViewCellStyleDefault" id="TgQ-af-uxc">
                                         <rect key="frame" x="0.0" y="35" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TgQ-af-uxc" id="jwH-GI-Dc0">
-                                            <rect key="frame" x="0.0" y="0.0" width="370" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kUr-mh-3lx">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="43.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -349,15 +354,15 @@
                             </tableViewSection>
                             <tableViewSection id="5Kr-I6-JHw">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" textLabel="8gn-mB-vZW" style="IBUITableViewCellStyleDefault" id="ueb-Jm-tZq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="preferenceCell" textLabel="8gn-mB-vZW" style="IBUITableViewCellStyleDefault" id="ueb-Jm-tZq">
                                         <rect key="frame" x="0.0" y="115" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ueb-Jm-tZq" id="JdM-es-u2t">
-                                            <rect key="frame" x="0.0" y="0.0" width="370" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Certifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8gn-mB-vZW">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="43.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -370,15 +375,15 @@
                             </tableViewSection>
                             <tableViewSection id="1Mc-sp-C1M">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" textLabel="dQ2-G6-vwd" style="IBUITableViewCellStyleDefault" id="gGA-3t-EHK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="preferenceCell" textLabel="dQ2-G6-vwd" style="IBUITableViewCellStyleDefault" id="gGA-3t-EHK">
                                         <rect key="frame" x="0.0" y="195" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gGA-3t-EHK" id="xYW-up-rcP">
-                                            <rect key="frame" x="0.0" y="0.0" width="370" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Popular Actors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dQ2-G6-vwd">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="43.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -421,7 +426,12 @@
                             <outlet property="delegate" destination="J1f-03-SIS" id="8LJ-Bd-iub"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Choose Your Preferences" id="jJ0-AI-f8w"/>
+                    <navigationItem key="navigationItem" title="Choose Your Preferences" id="jJ0-AI-f8w">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="mhN-UC-pcj"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="mhN-UC-pcj" id="b3n-gt-a1m"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rf4-Nd-u6S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

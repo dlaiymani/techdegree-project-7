@@ -31,6 +31,7 @@
 		AAF23BB922881FBC00667B99 /* DetailMovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BB822881FBC00667B99 /* DetailMovieController.swift */; };
 		AAF23BBB22883E2B00667B99 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BBA22883E2B00667B99 /* Actor.swift */; };
 		AAF23BBE2289605700667B99 /* AlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BBD2289605700667B99 /* AlertError.swift */; };
+		AAF23BC222896B1700667B99 /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BC122896B1700667B99 /* PreferencesController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		AAF23BB822881FBC00667B99 /* DetailMovieController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieController.swift; sourceTree = "<group>"; };
 		AAF23BBA22883E2B00667B99 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		AAF23BBD2289605700667B99 /* AlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertError.swift; sourceTree = "<group>"; };
+		AAF23BC122896B1700667B99 /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				AAF23B932285BE5600667B99 /* SelectParametersController.swift */,
 				AAF23BB02288065600667B99 /* MovieListController.swift */,
 				AAF23BB822881FBC00667B99 /* DetailMovieController.swift */,
+				AAF23BC122896B1700667B99 /* PreferencesController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				AAF23BB922881FBC00667B99 /* DetailMovieController.swift in Sources */,
 				AAF23B9C2285BFFD00667B99 /* Endpoint.swift in Sources */,
 				AAF23B982285BF8700667B99 /* JSONDecodable.swift in Sources */,
+				AAF23BC222896B1700667B99 /* PreferencesController.swift in Sources */,
 				AAF23BAD2287F26C00667B99 /* Array+Extension.swift in Sources */,
 				AAF23BB52288169A00667B99 /* PendingOperation.swift in Sources */,
 				AAF23BB12288065600667B99 /* MovieListController.swift in Sources */,
