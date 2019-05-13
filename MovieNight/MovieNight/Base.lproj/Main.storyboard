@@ -42,7 +42,7 @@
                                 <state key="selected" backgroundImage="bubble-selected"/>
                                 <connections>
                                     <action selector="userButtonTapped:" destination="uth-gW-Teq" eventType="touchUpInside" id="x05-10-jgy"/>
-                                    <segue destination="dgr-Xe-TXY" kind="presentation" id="fsY-6t-4Xz"/>
+                                    <segue destination="dgr-Xe-TXY" kind="presentation" identifier="selectionSegueUser1" id="fsY-6t-4Xz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJL-V2-Lm9">
@@ -50,7 +50,7 @@
                                 <state key="normal" backgroundImage="bubble-empty"/>
                                 <connections>
                                     <action selector="userButtonTapped:" destination="uth-gW-Teq" eventType="touchUpInside" id="yNr-8j-obk"/>
-                                    <segue destination="dgr-Xe-TXY" kind="presentation" id="h1n-lv-WSQ"/>
+                                    <segue destination="dgr-Xe-TXY" kind="presentation" identifier="selectionSegueUser2" id="h1n-lv-WSQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -78,11 +78,16 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Clear" id="yRe-9r-hSE">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="clearButtonTapped:" destination="uth-gW-Teq" id="xuT-Nt-fgw"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="preferencesButton" destination="V6u-r9-pVM" id="4LL-nB-WAy"/>
                         <outlet property="user1Button" destination="iUn-t8-zP4" id="ai9-80-PG8"/>
                         <outlet property="user2Button" destination="jJL-V2-Lm9" id="qZ2-cF-2Hn"/>
+                        <outlet property="viewResultsButton" destination="nUw-Tt-wgP" id="iC0-iW-59E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="66F-Ua-L4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -495,7 +500,7 @@
         <image name="bubble-selected" width="123.5" height="97.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h1n-lv-WSQ"/>
+        <segue reference="fsY-6t-4Xz"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

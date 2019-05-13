@@ -13,7 +13,7 @@ import UIKit
 class AlertError {
     
     var error: APIError
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
     init(error: APIError, on viewController: UIViewController?) {
         self.error = error
@@ -24,10 +24,14 @@ class AlertError {
     // Display an alertView with a given title and a givent message
     func alert(withTitle title: String, andMessage message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let action = UIAlertAction(title: "OK", style: .default, handler: { action in
+            self.viewController?.dismiss(animated: true, completion: nil)
+        })
         alertController.addAction(action)
         viewController?.present(alertController, animated: true, completion: nil)
     }
+    
+    
     
     // Handle the API errors
     func displayAlert() {

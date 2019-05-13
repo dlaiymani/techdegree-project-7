@@ -14,7 +14,7 @@ protocol Item: NSObject, JSONDecodable {
 }
 
 
-enum ParemeterType: String {
+enum ParameterType: String {
     case genre = "Genres"
     case certification = "Certifications"
     case popularActors = "Popular Actors"

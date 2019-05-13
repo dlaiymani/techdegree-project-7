@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var user1Button: UIButton!
     @IBOutlet weak var user2Button: UIButton!
+    @IBOutlet weak var viewResultsButton: UIButton!
+    @IBOutlet weak var preferencesButton: UIBarButtonItem!
     
     lazy var client: ImdbClient = {
         return ImdbClient(configuration: .default)
@@ -27,6 +29,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        selectedParameters = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,false,false]
         
     //    genres = [Genre(json: ["id": 28,"name": "Action"]), Genre(json: ["id": 12,"name": "Adventure"])] as! [Genre]
      //   certifications = [Certification(json: ["certification": "NC-17"])] as! [Certification]
@@ -35,27 +38,53 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.barStyle = .black
-        if genres.count > 0 {
-            
             // delete duplicate
             genres = genres.removeDuplicates()
             certifications = certifications.removeDuplicates()
             popularActors = popularActors.removeDuplicates()
-
+        
+        if (!user1Button.isUserInteractionEnabled && !user2Button.isUserInteractionEnabled) {
+            viewResultsButton.isEnabled = true
+        } else {
+            viewResultsButton.isEnabled = false
         }
-
+        
+        if (!user1Button.isUserInteractionEnabled && user2Button.isUserInteractionEnabled) || (user1Button.isUserInteractionEnabled && !user2Button.isUserInteractionEnabled) {
+            preferencesButton.isEnabled = false
+        } else {
+            preferencesButton.isEnabled = true
+        }
     }
 
     
     @IBAction func userButtonTapped(_ sender: UIButton) {
         let image = UIImage(named: "bubble-selected")
-       
         sender.setBackgroundImage(image, for: .normal)
         sender.isUserInteractionEnabled = false
     }
     
     @IBAction func viewResults(_ sender: UIButton) {
         
+    }
+    
+    
+    @IBAction func clearButtonTapped(_ sender: Any) {
+        reinitButtons()
+    }
+    
+    
+    func reinitButtons() {
+        let image = UIImage(named: "bubble-empty")
+        user1Button.setBackgroundImage(image, for: .normal)
+        user2Button.setBackgroundImage(image, for: .normal)
+        user1Button.isUserInteractionEnabled = true
+        user2Button.isUserInteractionEnabled = true
+        viewResultsButton.isEnabled = false
+        
+        genres = [Genre]()
+        certifications = [Certification]()
+        popularActors = [Actor]()
+
     }
     
     // MARK: - Navigation
@@ -70,6 +99,23 @@ class ViewController: UIViewController {
             listViewController?.genres = genres
             listViewController?.certifications = certifications
             listViewController?.popularActors = popularActors
+        } else if (segue.identifier == "selectionSegueUser1" || segue.identifier == "selectionSegueUser2") {
+            var parameters = [ParameterType]()
+            
+            if selectedParameters![0] {
+                parameters.append(ParameterType.genre)
+            }
+            if selectedParameters![1] {
+                parameters.append(ParameterType.certification)
+            }
+            if selectedParameters![2] {
+                parameters.append(ParameterType.popularActors)
+            }
+
+            
+            let navController = segue.destination as! UINavigationController
+            let selectViewController = navController.topViewController as! SelectParametersController
+            selectViewController.preferences = parameters
         }
     }
     

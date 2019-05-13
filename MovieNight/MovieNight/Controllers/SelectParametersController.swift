@@ -27,7 +27,8 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     }()
     
     var selectedParameters = [Int]()
-    var parameterNumber = 1
+    var preferences = [ParameterType]()
+    var parameterNumber = 0
     var numberOfParametersToSelect = 1
     
 
@@ -40,10 +41,10 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         self.tableView.tintColor = .blue
         activityIndicator.startAnimating()
         
-        switch parameterNumber {
-        case 1:
+        switch preferences[parameterNumber] {
+        case .genre:
             numberOfParametersToSelect = 3
-            self.navigationItem.title = ParemeterType.genre.rawValue
+            self.navigationItem.title = ParameterType.genre.rawValue
             client.searchGenres() { [weak self] result in
                 switch result {
                 case .success(let genres):
@@ -56,9 +57,9 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                     alertError.displayAlert()
                 }
             }
-        case 2:
+        case .certification:
             numberOfParametersToSelect = 1
-            self.navigationItem.title = ParemeterType.certification.rawValue
+            self.navigationItem.title = ParameterType.certification.rawValue
             client.searchCertifications() { [weak self] result in
                 switch result {
                 case .success(let certification):
@@ -69,11 +70,12 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                 case .failure(let error):
                     let alertError = AlertError(error: error, on: self)
                     alertError.displayAlert()
+
                 }
             }
-        case 3:
+        case .popularActors:
             numberOfParametersToSelect = 3
-            self.navigationItem.title = ParemeterType.popularActors.rawValue
+            self.navigationItem.title = ParameterType.popularActors.rawValue
             client.searchPopularActors() { [weak self] result in
                 switch result {
                 case .success(let actors):
@@ -86,10 +88,10 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                     alertError.displayAlert()
                 }
             }
-        default:
-            break
+            
         }
     }
+         
     
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.barStyle = .black
@@ -129,19 +131,22 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         if segue.identifier == "nextParameterSegue" {
             if let vc = segue.destination as? SelectParametersController {
                 
-                switch parameterNumber {
-                case 1:
+                
+                switch preferences[parameterNumber] {
+                case .genre:
                     updateParameters(for: .genre)
-                case 2:
+                case .certification:
                     updateParameters(for: .certification)
-                    //dismiss(animated: true, completion: nil)
-                case 3:
+                case .popularActors:
                     updateParameters(for: .popularActors)
-                    dismiss(animated: true, completion: nil)
-                default:
-                    break
                 }
+                
+                if parameterNumber == preferences.count-1 {
+                        dismiss(animated: true, completion: nil)
+                }
+                
                 vc.parameterNumber = parameterNumber + 1
+                vc.preferences = preferences
             }
         }
     }
@@ -166,7 +171,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         return items
     }
     
-    func updateParameters(for parameterType: ParemeterType) {
+    func updateParameters(for parameterType: ParameterType) {
         
         if let rootVC = rootViewController() {
             switch parameterType {
@@ -178,7 +183,6 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                 rootVC.popularActors.append(contentsOf: getItemsFromSelectedParameters() as! [Actor])
             }
         }
-        
         
     }
     

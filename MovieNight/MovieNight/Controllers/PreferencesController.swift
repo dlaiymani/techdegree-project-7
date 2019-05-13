@@ -15,7 +15,7 @@ class PreferencesController: UITableViewController {
     
     @IBOutlet var cells: [UITableViewCell]!
     
-    var preferences = [ParemeterType.genre]
+    var preferences = [ParameterType.genre]
     var selectedParameters = [Bool]()
     var numberOfParametersToSelect = 1
     let userDefaults = UserDefaults.standard
