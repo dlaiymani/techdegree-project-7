@@ -39,6 +39,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         switch parameterNumber {
         case 1:
             numberOfParametersToSelect = 3
+            self.navigationItem.title = ParemeterType.genre.rawValue
             client.searchGenres() { [weak self] result in
                 switch result {
                 case .success(let genres):
@@ -50,6 +51,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
             }
         case 2:
             numberOfParametersToSelect = 1
+            self.navigationItem.title = ParemeterType.certification.rawValue
             client.searchCertifications() { [weak self] result in
                 switch result {
                 case .success(let certification):
@@ -61,6 +63,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
             }
         case 3:
             numberOfParametersToSelect = 3
+            self.navigationItem.title = ParemeterType.popularActors.rawValue
             client.searchPopularActors() { [weak self] result in
                 switch result {
                 case .success(let actors):
