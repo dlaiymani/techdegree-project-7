@@ -64,7 +64,8 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
             client.searchPopularActors() { [weak self] result in
                 switch result {
                 case .success(let actors):
-                    self?.dataSource.updateData(actors)
+                    print("yo")
+                    self?.dataSource.appendData(actors)
                     self?.tableView.reloadData()
                 case .failure(let error):
                     print(error)

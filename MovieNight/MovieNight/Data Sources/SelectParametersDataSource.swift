@@ -50,6 +50,10 @@ class SelectParametersDataSource: NSObject, UITableViewDataSource {
         self.data = data
     }
     
+    func appendData(_ data: [Item]) {
+        self.data.append(contentsOf: data)
+    }
+    
     func object(at indexPath: IndexPath) -> Item {
         return data[indexPath.row]
     }

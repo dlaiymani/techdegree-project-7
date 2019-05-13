@@ -48,14 +48,17 @@ class ImdbClient: APIClient {
     
     func searchPopularActors(completion: @escaping (Result<[Actor], APIError>)  -> Void) {
         
-        let endpoint = Imdb.searchPopularActors(apiKey: apiKey)
-        let request = endpoint.request
+        for page in 1...3 {
+        
+            let endpoint = Imdb.searchPopularActors(apiKey: apiKey, page: String(page))
+            let request = endpoint.request
             
-        fetch(with: request, parse: { json -> [Actor] in
-            guard let genres = json["results"] as? [[String: Any]] else { return [] }
-            return genres.compactMap { Actor(json: $0) }
-            
-        }, completion: completion)
+            fetch(with: request, parse: { json -> [Actor] in
+                guard let genres = json["results"] as? [[String: Any]] else { return [] }
+                return genres.compactMap { Actor(json: $0) }
+                
+            }, completion: completion)
+        }
     }
     
     
@@ -63,8 +66,6 @@ class ImdbClient: APIClient {
         
         let endpoint = Imdb.discoverMovies(apiKey: apiKey, genres: genres, certifications: certifications, actors: popularActores)
         let request = endpoint.request
-        
-        print(request)
         
         print(request)
         

@@ -42,7 +42,7 @@ extension Endpoint {
 enum Imdb {
     case searchGenres(apiKey: String)
     case searchCertifications(apiKey: String)
-    case searchPopularActors(apiKey: String)
+    case searchPopularActors(apiKey: String, page: String)
     case discoverMovies(apiKey: String, genres: [Genre], certifications: [Certification], actors: [Actor])
 }
 
@@ -66,10 +66,12 @@ extension Imdb: Endpoint {
             return [
                 URLQueryItem(name: "api_key", value: apiKey)
             ]
-        case .searchPopularActors(let apiKey):
+        case .searchPopularActors(let apiKey, let page):
             return [
                 URLQueryItem(name: "api_key", value: apiKey),
-                URLQueryItem(name: "language", value: "en-US")
+                URLQueryItem(name: "language", value: "en-US"),
+                URLQueryItem(name: "page", value: page),
+
             ]
         case .discoverMovies(let apiKey, let genres, let certifications, let actors):
             let genresStringArray = genres.map { String($0.id) }
