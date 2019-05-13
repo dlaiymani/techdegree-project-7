@@ -13,18 +13,31 @@ class PreferencesController: UITableViewController {
     
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
+    @IBOutlet var cells: [UITableViewCell]!
+    
     var preferences = [ParemeterType.genre]
-    var selectedParameters = [Int]()
+    var selectedParameters = [Bool]()
     var numberOfParametersToSelect = 1
+    let userDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //userDefaults.set(nil, forKey: "Preferences")
         self.tableView.tintColor = .blue
+        
+        selectedParameters = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,false,false]
+        displayPrefs()
+        tableView.reloadData()
+        
+        if selectedParameters.count > 0 {
+            print(selectedParameters[0])
+        }
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        
         if selectedParameters.count == 0 {
             doneButton.isEnabled = false
         } else {
@@ -37,16 +50,13 @@ class PreferencesController: UITableViewController {
             
             if cell.accessoryType == .none {
                     cell.accessoryType = .checkmark
-                    selectedParameters.append(indexPath.row)
+                    selectedParameters[indexPath.section] = true
             } else {
                 cell.accessoryType = .none
-                let index = selectedParameters.firstIndex(of: indexPath.row)
-                if let index = index {
-                    selectedParameters.remove(at: index)
-                }
+                selectedParameters[indexPath.section] = false
             }
             
-            if selectedParameters.count == 0 {
+            if nothingIsSelected() {
                 doneButton.isEnabled = false
             } else {
                 doneButton.isEnabled = true
@@ -54,14 +64,35 @@ class PreferencesController: UITableViewController {
         }
     }
     
+    func displayPrefs() {
+        for section in 0...2 {
+            let pref = selectedParameters[section]
+            
+            if pref == true {
+                cells[section].accessoryType = .checkmark
+            } else {
+                cells[section].accessoryType = .none
+            }
+        }
+    }
     
-    /*override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "preferenceCell", for: indexPath)
+    func nothingIsSelected() -> Bool {
+        for section in selectedParameters {
+            if section == true {
+                return false
+            }
+        }
+        return true
+    }
+    
+    
+    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        print(selectedParameters.count)
+        self.userDefaults.set(selectedParameters, forKey: "Preferences")
+        dismiss(animated: true, completion: nil)
         
-        cell.accessoryType = .none
-        
-        return cell
-    }*/
+    }
 
     /*
     // MARK: - Navigation

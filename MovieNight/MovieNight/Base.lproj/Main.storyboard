@@ -427,10 +427,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Choose Your Preferences" id="jJ0-AI-f8w">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="mhN-UC-pcj"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="mhN-UC-pcj">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="J1f-03-SIS" id="CBj-dY-C0w"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="doneButton" destination="mhN-UC-pcj" id="b3n-gt-a1m"/>
+                        <outletCollection property="cells" destination="TgQ-af-uxc" collectionClass="NSMutableArray" id="Aac-4Z-vWo"/>
+                        <outletCollection property="cells" destination="ueb-Jm-tZq" collectionClass="NSMutableArray" id="CP1-uO-Got"/>
+                        <outletCollection property="cells" destination="gGA-3t-EHK" collectionClass="NSMutableArray" id="pyW-A3-JuW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rf4-Nd-u6S" userLabel="First Responder" sceneMemberID="firstResponder"/>
