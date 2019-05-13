@@ -17,6 +17,8 @@ class ViewController: UIViewController {
         return ImdbClient(configuration: .default)
     }()
     
+    let userDefaults = UserDefaults.standard
+    var selectedParameters: [Bool]?
     var genres = [Genre]()
     var certifications = [Certification]()
     var popularActors = [Actor]()
@@ -24,6 +26,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
     //    genres = [Genre(json: ["id": 28,"name": "Action"]), Genre(json: ["id": 12,"name": "Adventure"])] as! [Genre]
      //   certifications = [Certification(json: ["certification": "NC-17"])] as! [Certification]
@@ -38,16 +41,7 @@ class ViewController: UIViewController {
             genres = genres.removeDuplicates()
             certifications = certifications.removeDuplicates()
             popularActors = popularActors.removeDuplicates()
-            
-//            for genre in genres {
-//                print(genre.id)
-//            }
-//
-//            for certif in certifications {
-//                print(certif.name)
-//            }
-            
-            
+
         }
 
     }
@@ -65,6 +59,11 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Navigation
+    
+    @IBAction func unwindFromPrefs(segue: UIStoryboardSegue) {
+        selectedParameters = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,false,false]
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MovieListSegue" {
             let listViewController = segue.destination as? MovieListController

@@ -30,10 +30,6 @@ class PreferencesController: UITableViewController {
         displayPrefs()
         tableView.reloadData()
         
-        if selectedParameters.count > 0 {
-            print(selectedParameters[0])
-        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,20 +84,20 @@ class PreferencesController: UITableViewController {
     
     
     @IBAction func doneButtonTapped(_ sender: Any) {
-        print(selectedParameters.count)
-        self.userDefaults.set(selectedParameters, forKey: "Preferences")
-        dismiss(animated: true, completion: nil)
+        
+        
+       // dismiss(animated: true, completion: nil)
         
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        print(selectedParameters.count)
+        self.userDefaults.set(selectedParameters, forKey: "Preferences")
     }
-    */
+    
 
 }

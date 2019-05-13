@@ -430,6 +430,7 @@
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="mhN-UC-pcj">
                             <connections>
                                 <action selector="doneButtonTapped:" destination="J1f-03-SIS" id="CBj-dY-C0w"/>
+                                <segue destination="cwJ-IN-a2f" kind="unwind" unwindAction="unwindFromPrefsWithSegue:" id="vmQ-tK-MF9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -441,6 +442,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rf4-Nd-u6S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cwJ-IN-a2f" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1505.7971014492755" y="837.05357142857144"/>
         </scene>
