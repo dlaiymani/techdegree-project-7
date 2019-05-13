@@ -199,7 +199,7 @@
             </objects>
             <point key="canvasLocation" x="2589.8550724637685" y="855.80357142857144"/>
         </scene>
-        <!--Select Genres-->
+        <!--Select Parameters Controller-->
         <scene sceneID="xQK-f6-1E2">
             <objects>
                 <viewController id="lkh-0l-sGw" customClass="SelectParametersController" customModule="MovieNight" customModuleProvider="target" sceneMemberID="viewController">
@@ -266,7 +266,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AQe-4O-R1u"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Select Genres" id="SUY-5c-Oap">
+                    <navigationItem key="navigationItem" id="SUY-5c-Oap">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="Zsd-qw-HzU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
