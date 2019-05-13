@@ -52,7 +52,8 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                     self?.activityIndicator.stopAnimating()
                     self?.activityIndicator.isHidden = true
                 case .failure(let error):
-                    print(error)
+                    let alertError = AlertError(error: error, on: self)
+                    alertError.displayAlert()
                 }
             }
         case 2:
@@ -66,7 +67,8 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                     self?.activityIndicator.stopAnimating()
                     self?.activityIndicator.isHidden = true
                 case .failure(let error):
-                    print(error)
+                    let alertError = AlertError(error: error, on: self)
+                    alertError.displayAlert()
                 }
             }
         case 3:
@@ -80,7 +82,8 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                     self?.activityIndicator.stopAnimating()
                     self?.activityIndicator.isHidden = true
                 case .failure(let error):
-                    print(error)
+                    let alertError = AlertError(error: error, on: self)
+                    alertError.displayAlert()
                 }
             }
         default:

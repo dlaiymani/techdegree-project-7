@@ -25,8 +25,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        genres = [Genre(json: ["id": 28,"name": "Action"]), Genre(json: ["id": 12,"name": "Adventure"])] as! [Genre]
-        certifications = [Certification(json: ["certification": "NC-17"])] as! [Certification]
+    //    genres = [Genre(json: ["id": 28,"name": "Action"]), Genre(json: ["id": 12,"name": "Adventure"])] as! [Genre]
+     //   certifications = [Certification(json: ["certification": "NC-17"])] as! [Certification]
         
     }
     
