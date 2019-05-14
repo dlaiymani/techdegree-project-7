@@ -32,7 +32,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="viewResults:" destination="uth-gW-Teq" eventType="touchUpInside" id="cS0-Ml-p4O"/>
                                     <segue destination="d5t-Lr-2Ev" kind="show" identifier="MovieListSegue" id="EQn-G3-eLz"/>
                                 </connections>
                             </button>

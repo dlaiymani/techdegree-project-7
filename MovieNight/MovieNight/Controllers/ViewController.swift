@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     }()
     
     let userDefaults = UserDefaults.standard
-    var selectedParameters: [Bool]?
+    var preferences: [Bool] = [true,false,false]
     var genres = [Genre]()
     var certifications = [Certification]()
     var popularActors = [Actor]()
@@ -29,20 +29,40 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selectedParameters = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,false,false]
-        
-    //    genres = [Genre(json: ["id": 28,"name": "Action"]), Genre(json: ["id": 12,"name": "Adventure"])] as! [Genre]
-     //   certifications = [Certification(json: ["certification": "NC-17"])] as! [Certification]
-        
+        preferences = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,false,false]
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        navigationController?.navigationBar.barStyle = .black
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+            navigationController?.navigationBar.barStyle = .black
+            updateUsersButtons()
             // delete duplicate
             genres = genres.removeDuplicates()
             certifications = certifications.removeDuplicates()
             popularActors = popularActors.removeDuplicates()
-        
+    }
+
+    
+    @IBAction func userButtonTapped(_ sender: UIButton) {
+        let image = UIImage(named: "bubble-selected")
+        sender.setBackgroundImage(image, for: .normal)
+        sender.isUserInteractionEnabled = false
+    }
+    
+  
+    @IBAction func clearButtonTapped(_ sender: Any) {
+        // reset the arrays
+        genres = [Genre]()
+        certifications = [Certification]()
+        popularActors = [Actor]()
+        // reset the buttons
+        reinitButtons()
+    }
+    
+    
+    func updateUsersButtons() {
         if (!user1Button.isUserInteractionEnabled && !user2Button.isUserInteractionEnabled) {
             viewResultsButton.isEnabled = true
         } else {
@@ -55,23 +75,6 @@ class ViewController: UIViewController {
             preferencesButton.isEnabled = true
         }
     }
-
-    
-    @IBAction func userButtonTapped(_ sender: UIButton) {
-        let image = UIImage(named: "bubble-selected")
-        sender.setBackgroundImage(image, for: .normal)
-        sender.isUserInteractionEnabled = false
-    }
-    
-    @IBAction func viewResults(_ sender: UIButton) {
-        
-    }
-    
-    
-    @IBAction func clearButtonTapped(_ sender: Any) {
-        reinitButtons()
-    }
-    
     
     func reinitButtons() {
         let image = UIImage(named: "bubble-empty")
@@ -80,17 +83,13 @@ class ViewController: UIViewController {
         user1Button.isUserInteractionEnabled = true
         user2Button.isUserInteractionEnabled = true
         viewResultsButton.isEnabled = false
-        
-        genres = [Genre]()
-        certifications = [Certification]()
-        popularActors = [Actor]()
 
     }
     
     // MARK: - Navigation
     
     @IBAction func unwindFromPrefs(segue: UIStoryboardSegue) {
-        selectedParameters = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,false,false]
+        preferences = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,false,false]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -100,22 +99,21 @@ class ViewController: UIViewController {
             listViewController?.certifications = certifications
             listViewController?.popularActors = popularActors
         } else if (segue.identifier == "selectionSegueUser1" || segue.identifier == "selectionSegueUser2") {
-            var parameters = [ParameterType]()
+            var preferencesByType = [ParameterType]()
             
-            if selectedParameters![0] {
-                parameters.append(ParameterType.genre)
+            if preferences[0] {
+                preferencesByType.append(ParameterType.genre)
             }
-            if selectedParameters![1] {
-                parameters.append(ParameterType.certification)
+            if preferences[1] {
+                preferencesByType.append(ParameterType.certification)
             }
-            if selectedParameters![2] {
-                parameters.append(ParameterType.popularActors)
+            if preferences[2] {
+                preferencesByType.append(ParameterType.popularActors)
             }
 
-            
             let navController = segue.destination as! UINavigationController
             let selectViewController = navController.topViewController as! SelectParametersController
-            selectViewController.preferences = parameters
+            selectViewController.preferences = preferencesByType
         }
     }
     
