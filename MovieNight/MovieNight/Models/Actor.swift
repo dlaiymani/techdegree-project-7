@@ -8,6 +8,7 @@
 
 import Foundation
 
+// The Actor type
 class Actor: NSObject, Item {
     
     let id: Int

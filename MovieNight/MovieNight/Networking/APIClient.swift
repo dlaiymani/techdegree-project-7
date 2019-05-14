@@ -10,6 +10,7 @@ import Foundation
 
 import Foundation
 
+// Possible errors for API requests
 enum APIError: Error {
     case requestFailed
     case jsonConversionFailure
@@ -28,7 +29,7 @@ enum APIError: Error {
     }
 }
 
-
+// The APIClient protocol delivers a set of methods allowing asynchronous API requests
 protocol APIClient {
     var session: URLSession { get }
     
@@ -41,6 +42,7 @@ extension APIClient {
     typealias JSON = [String: AnyObject]
     typealias JSONTaskCompletionHandler = (JSON?, APIError?) -> Void
     
+    // Send a request a receive a JSON object
     func jsonTask(with request: URLRequest, completionHandler completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
         let task = session.dataTask(with: request) { data, response, error in
             
@@ -68,6 +70,7 @@ extension APIClient {
         return task
     }
     
+    // Send a request a parse the return JSON into an object of type T
     func fetch<T: JSONDecodable>(with request: URLRequest, parse: @escaping (JSON) ->T?, completion: @escaping (Result<T, APIError>) -> Void) {
         let task = jsonTask(with: request) { json, error in
             DispatchQueue.main.async {
@@ -90,6 +93,7 @@ extension APIClient {
         task.resume()
     }
     
+    // Send a request a parse the return JSON into an object of type [T]
     func fetch<T: JSONDecodable>(with request: URLRequest, parse: @escaping (JSON) ->[T], completion: @escaping (Result<[T], APIError>) -> Void) {
         let task = jsonTask(with: request) { json, error in
             DispatchQueue.main.async {

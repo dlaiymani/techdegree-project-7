@@ -8,6 +8,7 @@
 
 import Foundation
 
+// The Movie Genre type
 class Genre: NSObject, Item {
     
     let id: Int

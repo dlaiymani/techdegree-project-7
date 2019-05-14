@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+// DataSource for the movies list tabelview
 class MovieListDataSource: NSObject, UITableViewDataSource {
     private var data: [Movie]
     let tableView: UITableView
@@ -33,6 +35,8 @@ class MovieListDataSource: NSObject, UITableViewDataSource {
         return data.count
     }
     
+    // A cell = 2 text labels for the name and the overview + 1 imageview for the poster.
+    // The poster is downloaded by using operation queues
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath)
         
@@ -50,8 +54,7 @@ class MovieListDataSource: NSObject, UITableViewDataSource {
     }
     
     
-    // MARK: Helpers
-    
+    // MARK: Helpers functions to update the datasource and download the poster
     func update(_ object: Movie, at indexPath: IndexPath) {
         data[indexPath.row] = object
     }
@@ -65,6 +68,7 @@ class MovieListDataSource: NSObject, UITableViewDataSource {
     }
     
     
+    // Downloading the poster by using Operation Queues
     func downloadPosterForMovie(_ movie: Movie, atIndexPath indexPath: IndexPath) {
         
         if let _ = pendingOperations.downloadsInProgress[indexPath] {
@@ -92,6 +96,4 @@ class MovieListDataSource: NSObject, UITableViewDataSource {
         pendingOperations.downloadQueue.addOperation(downloader)
         
     }
-    
-    
 }

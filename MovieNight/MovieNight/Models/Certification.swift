@@ -8,6 +8,7 @@
 
 import Foundation
 
+// The Movie Certification type
 class Certification: NSObject, Item {
     
     let name: String

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// DataSource for the tableView allowing the user to choose its prefered parameter
 class SelectParametersDataSource: NSObject, UITableViewDataSource {
     private var data: [Item]
     
@@ -18,7 +19,6 @@ class SelectParametersDataSource: NSObject, UITableViewDataSource {
     }
     
     // MARK: UITableViewDataSource
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -27,8 +27,9 @@ class SelectParametersDataSource: NSObject, UITableViewDataSource {
         return data.count
     }
     
+    // A cell = a name label
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "genreCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
         
         let item = object(at: indexPath)
         
@@ -40,7 +41,7 @@ class SelectParametersDataSource: NSObject, UITableViewDataSource {
     
     
     
-    // MARK: Helpers
+    // MARK: Helpers functions to update the datasource
     
     func update(_ object: Item, at indexPath: IndexPath) {
         data[indexPath.row] = object

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Remove duplicate element of an Array of Equatable objects
 extension Array where Element:Equatable {
     func removeDuplicates() -> [Element] {
         var result = [Element]()

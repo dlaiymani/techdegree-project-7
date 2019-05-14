@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 
+// Allow to display an alertView corresponding to an APIError
 class AlertError {
     
     var error: APIError

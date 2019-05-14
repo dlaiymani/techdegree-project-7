@@ -9,12 +9,14 @@
 import Foundation
 import UIKit
 
+// Used by operation queues when downloading a poster
 enum MoviePosterState {
     case placeholder
     case downloaded
     case failed
 }
 
+// The type
 class Movie: NSObject, Item {
     
     let id: Int

@@ -8,19 +8,20 @@
 
 import Foundation
 
-
+// The Item protocol
 protocol Item: NSObject, JSONDecodable {
     var name: String { get }
 }
 
+// The user will be able to choose among ParameterType
 enum ParameterType: String {
     case genre = "Genres"
     case certification = "Certifications"
     case popularActors = "Popular Actors"
 }
 
-
+// Preference of the users
 struct Preference {
     let name: ParameterType
     let numberOfParametersToSelect: Int
-}
+
