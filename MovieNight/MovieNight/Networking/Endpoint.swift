@@ -73,13 +73,6 @@ extension Imdb: Endpoint {
 
             ]
         case .discoverMovies(let apiKey, let genres, let certifications, let actors):
-//            let genresStringArray = genres.map { String($0.id) }
-//           // let genresString = genresStringArray.joined(separator: ",")
-//            let certificationsStringArray = certifications.map { String($0.name) }
-//            let certificationsString = certificationsStringArray.joined(separator: ",")
-//            let actorsStringArray = actors.map { String($0.id) }
-//            let actorsString = actorsStringArray.joined(separator: ",")
-            
             var queryItemArray = [URLQueryItem(name: "api_key", value: apiKey),
                                   URLQueryItem(name: "certification_country", value: "US")]
             
