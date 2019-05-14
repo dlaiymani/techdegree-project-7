@@ -38,67 +38,71 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         self.tableView.dataSource = dataSource
         self.tableView.delegate = self
         configureView()
-        
-        let currentPreference = preferences[parameterNumber]
-        configureView(for: currentPreference)
+        updateTableView()
 
-        switch currentPreference.name {
-        case .genre:
-            
-            updateCells(for: currentPreference, result: Result<[Genre], APIError>)
-//            client.searchGenres() { [weak self] result in
-//                switch result {
-//                case .success(let genres):
-//                    self?.dataSource.updateData(genres)
-//                    self?.updateTableView()
-//                case .failure(let error):
-//                    self?.displayAlert(forError: error)
-//                }
-//            }
-        case .certification:
-            client.searchCertifications() { [weak self] result in
-                switch result {
-                case .success(let certification):
-                    self?.dataSource.updateData(certification)
-                    self?.updateTableView()
-                case .failure(let error):
-                    self?.displayAlert(forError: error)
-
-                }
-            }
-        case .popularActors:
-            client.searchPopularActors() { [weak self] result in
-                switch result {
-                case .success(let actors):
-                    self?.dataSource.appendData(actors)
-                    self?.updateTableView()
-                case .failure(let error):
-                    self?.displayAlert(forError: error)
-                }
-            }
-        }
     }
     
     
     // MARK: - Update view functions
     
-    
     func updateTableView() {
-        tableView.reloadData()
-        activityIndicator.stopAnimating()
-        activityIndicator.isHidden = true
+        
+        let currentPreference = preferences[parameterNumber]
+        configureView(for: currentPreference)
+        
+        switch currentPreference.name {
+        case .genre:
+            
+            client.searchGenres() { [weak self] result in
+                self?.updateCells(for: currentPreference, result: result)
+            }
+            //            client.searchGenres() { [weak self] result in
+            //                switch result {
+            //                case .success(let genres):
+            //                    self?.dataSource.updateData(genres)
+            //                    self?.updateTableView()
+            //                case .failure(let error):
+            //                    self?.displayAlert(forError: error)
+            //                }
+        //            }
+        case .certification:
+            client.searchCertifications() { [weak self] result in
+                self?.updateCells(for: currentPreference, result: result)
+            }
+            
+            
+            //            client.searchCertifications() { [weak self] result in
+            //                switch result {
+            //                case .success(let certification):
+            //                    self?.dataSource.updateData(certification)
+            //                    self?.updateTableView()
+            //                case .failure(let error):
+            //                    self?.displayAlert(forError: error)
+            //
+            //                }
+        //            }
+        case .popularActors:
+            
+            client.searchPopularActors() { [weak self] result in
+                self?.updateCells(for: currentPreference, result: result)
+            }
+            //            client.searchPopularActors() { [weak self] result in
+            //                switch result {
+            //                case .success(let actors):
+            //                    self?.dataSource.appendData(actors)
+            //                    self?.updateTableView()
+            //                case .failure(let error):
+            //                    self?.displayAlert(forError: error)
+            //                }
+            //            }
+        }
+        
     }
     
-    func displayAlert(forError error: APIError) {
-        let alertError = AlertError(error: error, on: self)
-        alertError.displayAlert()
-    }
-    
-    
-    func updateCells<T: JSONDecodable>(for preference: Preference, result: Result<T, APIError>) {
+    func updateCells<T>(for preference: Preference, result: Result<T, APIError>) {
         switch result {
-        case .success(let actors):
-            dataSource.appendData(actors as! [Item])
+        case .success(let resultArray):
+            dataSource.appendData(resultArray as! [Item])
             tableView.reloadData()
             activityIndicator.stopAnimating()
             activityIndicator.isHidden = true
