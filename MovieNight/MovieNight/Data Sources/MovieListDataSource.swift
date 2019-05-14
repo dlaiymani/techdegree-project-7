@@ -64,20 +64,6 @@ class MovieListDataSource: NSObject, UITableViewDataSource {
         
     }
     
-    
-    func preserveDuplicates() -> [Movie] {
-        var result = [Movie]()
-        
-        for value in data {
-            if data.contains(value) == true {
-                result.append(value)
-                data.removeAll() { $0 == value }
-            }
-        }
-        
-        return result
-    }
-    
     func object(at indexPath: IndexPath) -> Movie {
         return data[indexPath.row]
     }
