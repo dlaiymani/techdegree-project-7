@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-
+// Display the detail of a movie
 class DetailMovieController: UIViewController {
     
     @IBOutlet weak var posterImage: UIImageView!

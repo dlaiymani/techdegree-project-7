@@ -33,6 +33,7 @@ class MovieListController: UITableViewController {
 
         activityIndicator.startAnimating()
         
+        // get the movies corresponding to the users selected parameters. The parameters array can be empty
         client.discoverMovies(genres: genres, certifications: certifications, popularActores: popularActors) { [weak self] result in
             switch result {
             case .success(let movies):
@@ -48,7 +49,7 @@ class MovieListController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DetailMovieSegue" {
+        if segue.identifier == "DetailMovieSegue" { // Display the detail of a movie
             let indexPath = self.tableView.indexPathForSelectedRow!
             let movie = dataSource.object(at: indexPath)
             let detailMovieController = segue.destination as! DetailMovieController
