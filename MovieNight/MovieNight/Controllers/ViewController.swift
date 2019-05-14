@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     }()
     
     let userDefaults = UserDefaults.standard
-    var preferences: [Bool] = [true,false,false]
+    var preferences = [Bool]()
     var genres = [Genre]()
     var certifications = [Certification]()
     var popularActors = [Actor]()
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        preferences = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,false,false]
+        preferences = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,true,false]
     }
     
     
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         
             navigationController?.navigationBar.barStyle = .black
             updateUsersButtons()
-            // delete duplicate
+            // Remove duplicate choices
             genres = genres.removeDuplicates()
             certifications = certifications.removeDuplicates()
             popularActors = popularActors.removeDuplicates()
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
     // MARK: - Navigation
     
     @IBAction func unwindFromPrefs(segue: UIStoryboardSegue) {
-        preferences = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,false,false]
+        preferences = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,true,false]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

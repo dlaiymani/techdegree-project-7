@@ -433,7 +433,6 @@
                     <navigationItem key="navigationItem" title="Choose Your Preferences" id="jJ0-AI-f8w">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="mhN-UC-pcj">
                             <connections>
-                                <action selector="doneButtonTapped:" destination="J1f-03-SIS" id="CBj-dY-C0w"/>
                                 <segue destination="cwJ-IN-a2f" kind="unwind" unwindAction="unwindFromPrefsWithSegue:" id="vmQ-tK-MF9"/>
                             </connections>
                         </barButtonItem>

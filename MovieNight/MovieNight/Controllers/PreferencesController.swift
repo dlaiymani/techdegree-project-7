@@ -17,16 +17,15 @@ class PreferencesController: UITableViewController {
     
     var preferences = [ParameterType.genre]
     var selectedParameters = [Bool]()
-    var numberOfParametersToSelect = 1
+    var numberOfPreferences = 3
     let userDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //userDefaults.set(nil, forKey: "Preferences")
         self.tableView.tintColor = .blue
         
-        selectedParameters = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,false,false]
+        selectedParameters = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,true,false]
         displayPrefs()
         tableView.reloadData()
         
@@ -61,7 +60,7 @@ class PreferencesController: UITableViewController {
     }
     
     func displayPrefs() {
-        for section in 0...2 {
+        for section in 0...numberOfPreferences-1 {
             let pref = selectedParameters[section]
             
             if pref == true {
@@ -82,20 +81,8 @@ class PreferencesController: UITableViewController {
     }
     
     
-    
-    @IBAction func doneButtonTapped(_ sender: Any) {
-        
-        
-       // dismiss(animated: true, completion: nil)
-        
-    }
-
-    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(selectedParameters.count)
         self.userDefaults.set(selectedParameters, forKey: "Preferences")
     }
     
