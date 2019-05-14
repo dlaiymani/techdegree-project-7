@@ -34,12 +34,12 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.tableView.dataSource = dataSource
         self.tableView.delegate = self
-        nextButton.isEnabled = false
-        self.navigationItem.hidesBackButton = true
-        self.tableView.tintColor = .blue
-        activityIndicator.startAnimating()
+        
+        
+        configureView()
         
         switch preferences[parameterNumber] {
         case .genre:
@@ -90,6 +90,15 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
             }
             
         }
+    }
+    
+    
+    func configureView() {
+        nextButton.isEnabled = false
+        self.navigationItem.hidesBackButton = true
+        self.tableView.tintColor = .blue
+        activityIndicator.startAnimating()
+        nummberOfSelectedItemsLabel.text = "\(selectedParameters.count) of \(numberOfParametersToSelect) selected"
     }
          
     
