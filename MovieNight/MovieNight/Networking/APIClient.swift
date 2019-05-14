@@ -115,27 +115,27 @@ extension APIClient {
     }
     
     
-    func fetch<T: JSONDecodable>(with request: URLRequest, parse: @escaping (JSON) ->[[T]], completion: @escaping (Result<[[T]], APIError>) -> Void) {
-        let task = jsonTask(with: request) { json, error in
-            DispatchQueue.main.async {
-                guard let json = json else {
-                    if let error = error {
-                        completion(Result.failure(error))
-                    } else {
-                        completion(Result.failure(.invalidData))
-                    }
-                    return
-                }
-                
-                let value = parse(json)
-                
-                if !value.isEmpty {
-                    completion(.success(value))
-                } else {
-                    completion(.failure(.jsonParsingFailure))
-                }
-            }
-        }
-        task.resume()
-    }
+//    func fetch<T: JSONDecodable>(with request: URLRequest, parse: @escaping (JSON) ->[[T]], completion: @escaping (Result<[[T]], APIError>) -> Void) {
+//        let task = jsonTask(with: request) { json, error in
+//            DispatchQueue.main.async {
+//                guard let json = json else {
+//                    if let error = error {
+//                        completion(Result.failure(error))
+//                    } else {
+//                        completion(Result.failure(.invalidData))
+//                    }
+//                    return
+//                }
+//                
+//                let value = parse(json)
+//                
+//                if !value.isEmpty {
+//                    completion(.success(value))
+//                } else {
+//                    completion(.failure(.jsonParsingFailure))
+//                }
+//            }
+//        }
+//        task.resume()
+//    }
 }
