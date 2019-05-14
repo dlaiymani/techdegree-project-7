@@ -32,6 +32,7 @@
 		AAF23BBB22883E2B00667B99 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BBA22883E2B00667B99 /* Actor.swift */; };
 		AAF23BBE2289605700667B99 /* AlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BBD2289605700667B99 /* AlertError.swift */; };
 		AAF23BC222896B1700667B99 /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BC122896B1700667B99 /* PreferencesController.swift */; };
+		AAF23BC4228B0DB600667B99 /* MoviesDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF23BC3228B0DB600667B99 /* MoviesDownloader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		AAF23BBA22883E2B00667B99 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		AAF23BBD2289605700667B99 /* AlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertError.swift; sourceTree = "<group>"; };
 		AAF23BC122896B1700667B99 /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
+		AAF23BC3228B0DB600667B99 /* MoviesDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDownloader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				AAF23BA22285CA6400667B99 /* Result.swift */,
 				AAF23BB42288169A00667B99 /* PendingOperation.swift */,
 				AAF23BB6228816E700667B99 /* PosterDownloader.swift */,
+				AAF23BC3228B0DB600667B99 /* MoviesDownloader.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				AAF23BAF2287F95A00667B99 /* Movie.swift in Sources */,
 				AAF23BA32285CA6400667B99 /* Result.swift in Sources */,
 				AAF23BBE2289605700667B99 /* AlertError.swift in Sources */,
+				AAF23BC4228B0DB600667B99 /* MoviesDownloader.swift in Sources */,
 				AAF23B842285AF8100667B99 /* ViewController.swift in Sources */,
 				AAF23BA62286936800667B99 /* SelectParametersDataSource.swift in Sources */,
 				AAF23B822285AF8100667B99 /* AppDelegate.swift in Sources */,

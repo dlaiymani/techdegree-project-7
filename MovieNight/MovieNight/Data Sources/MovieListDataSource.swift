@@ -12,7 +12,7 @@ import UIKit
 
 // DataSource for the movies list tabelview
 class MovieListDataSource: NSObject, UITableViewDataSource {
-    private var data: [Movie]
+    var data: [Movie]
     let tableView: UITableView
     
     let pendingOperations = PendingOperation()
@@ -61,12 +61,30 @@ class MovieListDataSource: NSObject, UITableViewDataSource {
     
     func updateData(_ data: [Movie]) {
         self.data = data
+        
+    }
+    
+    
+    func preserveDuplicates() -> [Movie] {
+        var result = [Movie]()
+        
+        for value in data {
+            if data.contains(value) == true {
+                result.append(value)
+                data.removeAll() { $0 == value }
+            }
+        }
+        
+        return result
     }
     
     func object(at indexPath: IndexPath) -> Movie {
         return data[indexPath.row]
     }
     
+    func moviesList() -> [Movie] {
+        return self.data
+    }
     
     // Downloading the poster by using Operation Queues
     func downloadPosterForMovie(_ movie: Movie, atIndexPath indexPath: IndexPath) {

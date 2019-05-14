@@ -45,7 +45,7 @@ class Movie: NSObject, Item {
     }
     
     override func isEqual(_ object: Any?) -> Bool {
-        return name == (object as? Certification)?.name
+        return id == (object as? Movie)?.id
     }
     
 }

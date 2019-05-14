@@ -39,9 +39,9 @@ class ViewController: UIViewController {
             navigationController?.navigationBar.barStyle = .black
             updateUsersButtons()
             // Remove duplicate choices
-            genres = genres.removeDuplicates()
-            certifications = certifications.removeDuplicates()
-            popularActors = popularActors.removeDuplicates()
+//            genres = genres.removeDuplicates()
+//            certifications = certifications.removeDuplicates()
+//            popularActors = popularActors.removeDuplicates()
     }
 
     
