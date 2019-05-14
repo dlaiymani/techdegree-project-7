@@ -56,47 +56,16 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
             client.searchGenres() { [weak self] result in
                 self?.updateCells(for: currentPreference, result: result)
             }
-            //            client.searchGenres() { [weak self] result in
-            //                switch result {
-            //                case .success(let genres):
-            //                    self?.dataSource.updateData(genres)
-            //                    self?.updateTableView()
-            //                case .failure(let error):
-            //                    self?.displayAlert(forError: error)
-            //                }
-        //            }
         case .certification:
             client.searchCertifications() { [weak self] result in
                 self?.updateCells(for: currentPreference, result: result)
             }
-            
-            
-            //            client.searchCertifications() { [weak self] result in
-            //                switch result {
-            //                case .success(let certification):
-            //                    self?.dataSource.updateData(certification)
-            //                    self?.updateTableView()
-            //                case .failure(let error):
-            //                    self?.displayAlert(forError: error)
-            //
-            //                }
-        //            }
         case .popularActors:
             
             client.searchPopularActors() { [weak self] result in
                 self?.updateCells(for: currentPreference, result: result)
             }
-            //            client.searchPopularActors() { [weak self] result in
-            //                switch result {
-            //                case .success(let actors):
-            //                    self?.dataSource.appendData(actors)
-            //                    self?.updateTableView()
-            //                case .failure(let error):
-            //                    self?.displayAlert(forError: error)
-            //                }
-            //            }
         }
-        
     }
     
     func updateCells<T>(for preference: Preference, result: Result<T, APIError>) {
@@ -217,3 +186,14 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         
     }
 }
+
+
+//            client.searchPopularActors() { [weak self] result in
+//                switch result {
+//                case .success(let actors):
+//                    self?.dataSource.appendData(actors)
+//                    self?.updateTableView()
+//                case .failure(let error):
+//                    self?.displayAlert(forError: error)
+//                }
+//            }
