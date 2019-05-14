@@ -9,13 +9,14 @@
 import Foundation
 
 
-
+// Operation queue for downloading the movies list
 class MovieDownloader: Operation {
     
     var movies: [Movie]
     var genres = [Genre]()
     var certifications = [Certification]()
     var popularActors = [Actor]()
+    var error: APIError?
     
     let client: ImdbClient
     
@@ -73,13 +74,10 @@ class MovieDownloader: Operation {
             switch result {
             case .success(let movies):
                 self?.movies = movies
-                print(self?.movies)
                 self?.isExecuting = false
                 self?.isFinished = true
             case .failure(let error):
-                //let alertError = AlertError(error: error, on: self)
-                //alertError.displayAlert()
-                print(error)
+                self?.error = error
                 self?.isExecuting = false
                 self?.isFinished = true
             }

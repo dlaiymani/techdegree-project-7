@@ -45,6 +45,8 @@ class AlertError {
             alert(withTitle: "Bad server response", andMessage: "The server's response seems incorrect")
         case .jsonParsingFailure:
             alert(withTitle: "No match", andMessage: "Sorry, no movie corresponds to your request")
+        case .noMatch:
+            alert(withTitle: "No match", andMessage: "Sorry, no movie corresponds to your request")
         }
     }
 }
