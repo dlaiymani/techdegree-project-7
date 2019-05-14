@@ -36,7 +36,6 @@ extension Endpoint {
         let url = urlComponents.url!
         return URLRequest(url: url)
      }
-    
 }
 
 enum Imdb {
@@ -74,12 +73,12 @@ extension Imdb: Endpoint {
 
             ]
         case .discoverMovies(let apiKey, let genres, let certifications, let actors):
-            let genresStringArray = genres.map { String($0.id) }
-            let genresString = genresStringArray.joined(separator: ",")
-            let certificationsStringArray = certifications.map { String($0.name) }
-            let certificationsString = certificationsStringArray.joined(separator: ",")
-            let actorsStringArray = actors.map { String($0.id) }
-            let actorsString = actorsStringArray.joined(separator: ",")
+//            let genresStringArray = genres.map { String($0.id) }
+//           // let genresString = genresStringArray.joined(separator: ",")
+//            let certificationsStringArray = certifications.map { String($0.name) }
+//            let certificationsString = certificationsStringArray.joined(separator: ",")
+//            let actorsStringArray = actors.map { String($0.id) }
+//            let actorsString = actorsStringArray.joined(separator: ",")
             
             var queryItemArray = [URLQueryItem(name: "api_key", value: apiKey),
                                   URLQueryItem(name: "certification_country", value: "US")]
@@ -89,13 +88,6 @@ extension Imdb: Endpoint {
             queryItemArray.append(contentsOf: actors.map { URLQueryItem(name: "with_cast", value: String($0.id))})
 
             return queryItemArray
-//            return [
-//                URLQueryItem(name: "api_key", value: apiKey),
-//                URLQueryItem(name: "with_genres", value: genresString),
-//                URLQueryItem(name: "certification_country", value: "US"),
-//                URLQueryItem(name: "certification.gte", value: certificationsString),
-//                URLQueryItem(name: "with_cast", value: actorsString),
-//            ]
         }
     }
     

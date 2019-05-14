@@ -11,6 +11,7 @@ import Foundation
 
 class ImdbClient: APIClient {
     let session: URLSession
+    let numberOfPages = 3
     
     var apiKey: String {
         return "c1129ccd979daffba7fd2a607dd6281c"
@@ -48,8 +49,7 @@ class ImdbClient: APIClient {
     
     func searchPopularActors(completion: @escaping (Result<[Actor], APIError>)  -> Void) {
         
-        for page in 1...3 {
-        
+        for page in 1...numberOfPages {
             let endpoint = Imdb.searchPopularActors(apiKey: apiKey, page: String(page))
             let request = endpoint.request
             
@@ -66,9 +66,7 @@ class ImdbClient: APIClient {
         
         let endpoint = Imdb.discoverMovies(apiKey: apiKey, genres: genres, certifications: certifications, actors: popularActores)
         let request = endpoint.request
-        
-        print(request)
-        
+                
         fetch(with: request, parse: { json -> [Movie] in
             guard let movies = json["results"] as? [[String: Any]] else { return [] }
             return movies.compactMap { Movie(json: $0) }

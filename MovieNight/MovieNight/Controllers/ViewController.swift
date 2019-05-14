@@ -59,6 +59,7 @@ class ViewController: UIViewController {
         popularActors = [Actor]()
         // reset the buttons
         reinitButtons()
+        updateUsersButtons()
     }
     
     
@@ -109,12 +110,12 @@ class ViewController: UIViewController {
             }
             if preferencesBool[1] {
                 preferencesByType.append(ParameterType.certification)
-                preferences.append(Preference(name: .genre, numberOfParametersToSelect: 3))
+                preferences.append(Preference(name: .certification, numberOfParametersToSelect: 1))
 
             }
             if preferencesBool[2] {
                 preferencesByType.append(ParameterType.popularActors)
-                preferences.append(Preference(name: .genre, numberOfParametersToSelect: 3))
+                preferences.append(Preference(name: .popularActors, numberOfParametersToSelect: 3))
 
             }
 

@@ -27,7 +27,6 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     }()
     
     var selectedParameters = [Int]()
-    //var preferences = [ParameterType]()
     var preferences = [Preference]()
     var parameterNumber = 0
     var numberOfParametersToSelect = 1
@@ -45,29 +44,25 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
 
         switch currentPreference.name {
         case .genre:
-            client.searchGenres() { [weak self] result in
-                switch result {
-                case .success(let genres):
-                    self?.dataSource.updateData(genres)
-                    self?.tableView.reloadData()
-                    self?.activityIndicator.stopAnimating()
-                    self?.activityIndicator.isHidden = true
-                case .failure(let error):
-                    let alertError = AlertError(error: error, on: self)
-                    alertError.displayAlert()
-                }
-            }
+            
+            updateCells(for: currentPreference, result: Result<[Genre], APIError>)
+//            client.searchGenres() { [weak self] result in
+//                switch result {
+//                case .success(let genres):
+//                    self?.dataSource.updateData(genres)
+//                    self?.updateTableView()
+//                case .failure(let error):
+//                    self?.displayAlert(forError: error)
+//                }
+//            }
         case .certification:
             client.searchCertifications() { [weak self] result in
                 switch result {
                 case .success(let certification):
                     self?.dataSource.updateData(certification)
-                    self?.tableView.reloadData()
-                    self?.activityIndicator.stopAnimating()
-                    self?.activityIndicator.isHidden = true
+                    self?.updateTableView()
                 case .failure(let error):
-                    let alertError = AlertError(error: error, on: self)
-                    alertError.displayAlert()
+                    self?.displayAlert(forError: error)
 
                 }
             }
@@ -76,18 +71,43 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                 switch result {
                 case .success(let actors):
                     self?.dataSource.appendData(actors)
-                    self?.tableView.reloadData()
-                    self?.activityIndicator.stopAnimating()
-                    self?.activityIndicator.isHidden = true
+                    self?.updateTableView()
                 case .failure(let error):
-                    let alertError = AlertError(error: error, on: self)
-                    alertError.displayAlert()
+                    self?.displayAlert(forError: error)
                 }
             }
-            
         }
     }
     
+    
+    // MARK: - Update view functions
+    
+    
+    func updateTableView() {
+        tableView.reloadData()
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+    }
+    
+    func displayAlert(forError error: APIError) {
+        let alertError = AlertError(error: error, on: self)
+        alertError.displayAlert()
+    }
+    
+    
+    func updateCells<T: JSONDecodable>(for preference: Preference, result: Result<T, APIError>) {
+        switch result {
+        case .success(let actors):
+            dataSource.appendData(actors as! [Item])
+            tableView.reloadData()
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
+        case .failure(let error):
+            let alertError = AlertError(error: error, on: self)
+            alertError.displayAlert()
+        }
+        
+    }
     
     
     func configureView(for preference: Preference) {

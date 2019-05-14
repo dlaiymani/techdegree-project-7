@@ -13,7 +13,6 @@ protocol Item: NSObject, JSONDecodable {
     var name: String { get }
 }
 
-
 enum ParameterType: String {
     case genre = "Genres"
     case certification = "Certifications"
