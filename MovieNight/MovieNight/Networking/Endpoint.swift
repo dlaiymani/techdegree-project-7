@@ -38,6 +38,7 @@ extension Endpoint {
      }
 }
 
+// The 4 types of requests
 enum Imdb {
     case searchGenres(apiKey: String)
     case searchCertifications(apiKey: String)
@@ -76,6 +77,7 @@ extension Imdb: Endpoint {
             var queryItemArray = [URLQueryItem(name: "api_key", value: apiKey),
                                   URLQueryItem(name: "certification_country", value: "US")]
             
+            // Concatenate the parameters in the request. For example, if 3 genres, then with_genres is repeated 3 times in the request string
             queryItemArray.append(contentsOf: genres.map { URLQueryItem(name: "with_genres", value: String($0.id)) })
             queryItemArray.append(contentsOf: certifications.map { URLQueryItem(name: "certification.gte", value: String($0.name))})
             queryItemArray.append(contentsOf: actors.map { URLQueryItem(name: "with_cast", value: String($0.id))})
