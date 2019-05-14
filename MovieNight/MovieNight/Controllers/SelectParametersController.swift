@@ -8,6 +8,7 @@
 
 import UIKit
 
+// The same controller is used for the differents parameters
 class SelectParametersController: UIViewController, UITableViewDelegate {
     
     
@@ -39,12 +40,11 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         self.tableView.delegate = self
         configureView()
         updateTableView()
-
     }
     
     
     // MARK: - Update view functions
-    
+    // Send the appropriate request and update the tableview to display the results
     func updateTableView() {
         
         let currentPreference = preferences[parameterNumber]
@@ -68,6 +68,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         }
     }
     
+    // Update the datasource and then the cells
     func updateCells<T>(for preference: Preference, result: Result<T, APIError>) {
         switch result {
         case .success(let resultArray):
@@ -82,7 +83,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         
     }
     
-    
+    // Display the correct number title and number of parameters to select
     func configureView(for preference: Preference) {
         numberOfParametersToSelect = preference.numberOfParametersToSelect
         nummberOfSelectedItemsLabel.text = "\(selectedParameters.count) of \(numberOfParametersToSelect) selected"
@@ -90,6 +91,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     }
     
     
+    // Initialisation of the view
     func configureView() {
         nextButton.isEnabled = false
         self.navigationItem.hidesBackButton = true
@@ -105,6 +107,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     // MARK: - TableView delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
+            // Managed the checkmarks
             if cell.accessoryType == .none {
                 if selectedParameters.count < numberOfParametersToSelect {
                     cell.accessoryType = .checkmark
@@ -118,7 +121,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                 }
             }
             nummberOfSelectedItemsLabel.text = "\(selectedParameters.count) of \(numberOfParametersToSelect) selected"
-            if selectedParameters.count == numberOfParametersToSelect {
+            if selectedParameters.count == numberOfParametersToSelect { // The correct number of parameters is selected
                 nextButton.isEnabled = true
             } else {
                 nextButton.isEnabled = false
@@ -142,7 +145,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                     updateParameters(for: .popularActors)
                 }
                 
-                if parameterNumber == preferences.count-1 {
+                if parameterNumber == preferences.count-1 { // No more parameter, back to the main view controller
                         dismiss(animated: true, completion: nil)
                 }
                 
@@ -153,7 +156,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     }
     
     // MARK: - Helper Functions
-    
+    // Get a reference to the main giew controller
     func rootViewController() -> ViewController? {
         if let rootNavVC = UIApplication.shared.keyWindow!.rootViewController as? UINavigationController, let rootVC = rootNavVC.viewControllers.first as? ViewController {
             return rootVC
@@ -163,6 +166,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         
     }
     
+    // Get the items selectionned by the user
     func getItemsFromSelectedParameters() -> [Item] {
         var items = [Item]()
         for i in selectedParameters {
@@ -171,8 +175,8 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         return items
     }
     
+    // update the final array of parameters i.e. the one which will be used to obatin the movie list
     func updateParameters(for parameterType: ParameterType) {
-        
         if let rootVC = rootViewController() {
             switch parameterType {
             case .genre:

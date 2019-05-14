@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // read the preferences from UserDefaults
         preferencesBool = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,true,false]
     }
     
@@ -88,37 +88,30 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Navigation
-    
+    // Back from Preferences View.
     @IBAction func unwindFromPrefs(segue: UIStoryboardSegue) {
         preferencesBool = userDefaults.object(forKey: "Preferences") as? [Bool] ?? [true,true,false]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "MovieListSegue" {
+        if segue.identifier == "MovieListSegue" { // Go to the Movie List
             let listViewController = segue.destination as? MovieListController
             listViewController?.genres = genres
             listViewController?.certifications = certifications
             listViewController?.popularActors = popularActors
-        } else if (segue.identifier == "selectionSegueUser1" || segue.identifier == "selectionSegueUser2") {
-            var preferencesByType = [ParameterType]()
+        } else if (segue.identifier == "selectionSegueUser1" || segue.identifier == "selectionSegueUser2") { // Go to users choices
+            // Build the users preferences. The number of choices is fixed here
             var preferences = [Preference]()
             
             if preferencesBool[0] {
-                preferencesByType.append(ParameterType.genre)
                 preferences.append(Preference(name: .genre, numberOfParametersToSelect: 3))
-                
             }
             if preferencesBool[1] {
-                preferencesByType.append(ParameterType.certification)
                 preferences.append(Preference(name: .certification, numberOfParametersToSelect: 1))
-
             }
             if preferencesBool[2] {
-                preferencesByType.append(ParameterType.popularActors)
                 preferences.append(Preference(name: .popularActors, numberOfParametersToSelect: 3))
-
             }
-
             let navController = segue.destination as! UINavigationController
             let selectViewController = navController.topViewController as! SelectParametersController
             selectViewController.preferences = preferences

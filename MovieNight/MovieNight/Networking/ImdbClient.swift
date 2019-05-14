@@ -21,7 +21,7 @@ class ImdbClient: APIClient {
         self.session = URLSession(configuration: configuration)
     }
     
-    
+    // Return the available IMDB Movies Genres
     func searchGenres(completion: @escaping (Result<[Genre], APIError>)  -> Void) {
         
         let endpoint = Imdb.searchGenres(apiKey: apiKey)
@@ -34,7 +34,7 @@ class ImdbClient: APIClient {
         }, completion: completion)
     }
     
-    
+    // Return the available IMDB Movies Certifications (US only)
     func searchCertifications(completion: @escaping (Result<[Certification], APIError>)  -> Void) {
         
         let endpoint = Imdb.searchCertifications(apiKey: apiKey)
@@ -47,8 +47,8 @@ class ImdbClient: APIClient {
         }, completion: completion)
     }
     
+    // Return a list of the IMDB Popular Actors. The list is limited to numberOfPages
     func searchPopularActors(completion: @escaping (Result<[Actor], APIError>)  -> Void) {
-        
         for page in 1...numberOfPages {
             let endpoint = Imdb.searchPopularActors(apiKey: apiKey, page: String(page))
             let request = endpoint.request
@@ -62,6 +62,7 @@ class ImdbClient: APIClient {
     }
     
     
+    // Return the movies corresponding to the users choices
     func discoverMovies(genres: [Genre], certifications: [Certification], popularActores: [Actor], completion: @escaping (Result<[Movie], APIError>)  -> Void) {
         
         let endpoint = Imdb.discoverMovies(apiKey: apiKey, genres: genres, certifications: certifications, actors: popularActores)

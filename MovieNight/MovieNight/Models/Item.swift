@@ -24,4 +24,4 @@ enum ParameterType: String {
 struct Preference {
     let name: ParameterType
     let numberOfParametersToSelect: Int
-
+}

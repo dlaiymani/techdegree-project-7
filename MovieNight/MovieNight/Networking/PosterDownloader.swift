@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 
+// Code for the download poster task
 class PosterDownloader: Operation {
     var movie: Movie
     
