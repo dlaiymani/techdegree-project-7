@@ -27,7 +27,8 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     }()
     
     var selectedParameters = [Int]()
-    var preferences = [ParameterType]()
+    //var preferences = [ParameterType]()
+    var preferences = [Preference]()
     var parameterNumber = 0
     var numberOfParametersToSelect = 1
     
@@ -37,14 +38,13 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         
         self.tableView.dataSource = dataSource
         self.tableView.delegate = self
-        
-        
         configureView()
         
-        switch preferences[parameterNumber] {
+        let currentPreference = preferences[parameterNumber]
+        configureView(for: currentPreference)
+
+        switch currentPreference.name {
         case .genre:
-            numberOfParametersToSelect = 3
-            self.navigationItem.title = ParameterType.genre.rawValue
             client.searchGenres() { [weak self] result in
                 switch result {
                 case .success(let genres):
@@ -58,8 +58,6 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                 }
             }
         case .certification:
-            numberOfParametersToSelect = 1
-            self.navigationItem.title = ParameterType.certification.rawValue
             client.searchCertifications() { [weak self] result in
                 switch result {
                 case .success(let certification):
@@ -74,8 +72,6 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
                 }
             }
         case .popularActors:
-            numberOfParametersToSelect = 3
-            self.navigationItem.title = ParameterType.popularActors.rawValue
             client.searchPopularActors() { [weak self] result in
                 switch result {
                 case .success(let actors):
@@ -93,12 +89,19 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     }
     
     
+    
+    func configureView(for preference: Preference) {
+        numberOfParametersToSelect = preference.numberOfParametersToSelect
+        nummberOfSelectedItemsLabel.text = "\(selectedParameters.count) of \(numberOfParametersToSelect) selected"
+        self.navigationItem.title = preference.name.rawValue
+    }
+    
+    
     func configureView() {
         nextButton.isEnabled = false
         self.navigationItem.hidesBackButton = true
         self.tableView.tintColor = .blue
         activityIndicator.startAnimating()
-        nummberOfSelectedItemsLabel.text = "\(selectedParameters.count) of \(numberOfParametersToSelect) selected"
     }
          
     
@@ -107,10 +110,8 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     }
 
     // MARK: - TableView delegate
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
-            
             if cell.accessoryType == .none {
                 if selectedParameters.count < numberOfParametersToSelect {
                     cell.accessoryType = .checkmark
@@ -139,9 +140,7 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nextParameterSegue" {
             if let vc = segue.destination as? SelectParametersController {
-                
-                
-                switch preferences[parameterNumber] {
+                switch preferences[parameterNumber].name {
                 case .genre:
                     updateParameters(for: .genre)
                 case .certification:
@@ -175,7 +174,6 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         var items = [Item]()
         for i in selectedParameters {
             items.append(dataSource.object(at: IndexPath(row: i, section: 0)))
-            print(dataSource.object(at: IndexPath(row: i, section: 0)))
         }
         return items
     }
@@ -194,6 +192,4 @@ class SelectParametersController: UIViewController, UITableViewDelegate {
         }
         
     }
-    
-
 }

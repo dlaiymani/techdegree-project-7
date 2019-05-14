@@ -19,3 +19,9 @@ enum ParameterType: String {
     case certification = "Certifications"
     case popularActors = "Popular Actors"
 }
+
+
+struct Preference {
+    let name: ParameterType
+    let numberOfParametersToSelect: Int
+}
